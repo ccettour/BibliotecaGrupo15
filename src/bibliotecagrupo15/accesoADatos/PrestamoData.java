@@ -1,7 +1,12 @@
 package bibliotecagrupo15.accesoADatos;
 
+import bibliotecagrupo15.entidades.Ejemplar;
+import bibliotecagrupo15.entidades.Lector;
 import bibliotecagrupo15.entidades.Prestamo;
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -38,6 +43,51 @@ public class PrestamoData {
      
      }
      
+    
      
+     public List<Lector> ListarLectoresxFecha(LocalDate fecha, int idLector){
+     ArrayList<Lector> lectores=new ArrayList<>();
+     String sql="SELECT lec.idLector, nroSocio, lec.nombre, mail "
+             + "FROM `lector` AS lec JOIN prestamo "
+             + "ON lec.idLector=prestamo.idLector WHERE prestamo.idPrestamo=?";
+         try {
+              PreparedStatement ps= con.prepareStatement(sql);
+              ps.setInt(1, idLector);
+              ResultSet rs=ps.executeQuery();
+             if (fecha.isAfter(rs.getDate("fechaFin").toLocalDate())) {
+                 while (rs.next()) {                     
+                     Lector lector= new Lector();
+                     
+                 }
+   
+             }
+             
+             
+             
+         } catch (SQLException ex) {
+             Logger.getLogger(PrestamoData.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     
+     
+     }
+     
+     
+     public List<Ejemplar> ListarLibrosxFecha(LocalDate fecha, int idEjemplar){
+     ArrayList<Ejemplar> ejemplares=new ArrayList<>();
+     String sql="";
+         try {
+              PreparedStatement ps= con.prepareStatement(sql);
+              ps.setInt(1, idEjemplar);
+              ResultSet rs=ps.executeQuery();
+             
+             
+             
+             
+         } catch (SQLException ex) {
+             Logger.getLogger(PrestamoData.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     
+     
+     }
      
 }
