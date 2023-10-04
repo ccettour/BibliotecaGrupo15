@@ -46,28 +46,34 @@ public class PrestamoData {
 
     }
 
-//    public List<Lector> ListarLectoresxFecha(LocalDate fecha, int idLector) {
-//        ArrayList<Lector> lectores = new ArrayList<>();
-//        String sql = "SELECT lec.idLector, nroSocio, lec.nombre, mail "
-//                + "FROM `lector` AS lec JOIN prestamo "
-//                + "ON lec.idLector=prestamo.idLector WHERE prestamo.idPrestamo=?";
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, idLector);
-//            ResultSet rs = ps.executeQuery();
-//            if (fecha.isAfter(rs.getDate("fechaFin").toLocalDate())) {
-//                while (rs.next()) {
-//                    Lector lector = new Lector();
-//
-//                }
-//
-//            }
-//
-//        } catch (SQLException ex) {
-//           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
-//        }
-//
-//    }
+    public List<Lector> ListarLectoresxFechaVencida(Date fecha) {
+        ArrayList<Lector> lectores = new ArrayList<>();
+        String sql = "SELECT lec.idLector, nroSocio, lec.nombre, mail "
+                + "FROM `lector` AS lec JOIN prestamo "
+                + "ON lec.idLector=prestamo.idLector WHERE prestamo.fechaFin<?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setDate(1, fecha);
+            ResultSet rs = ps.executeQuery();
+            if (fecha.after(rs.getDate("fechaFin"))) {
+                while (rs.next()) {
+                    Lector lector = new Lector();
+                    lector.setIdLector(rs.getInt("idLector"));
+                    lector.setDomicilio(rs.getString("domicilio"));
+                    lector.setMail(rs.getString("mail"));
+                    lector.setNombre(rs.getString("nombre"));
+                    lector.setSocio(rs.getInt("nroSocio"));
+                    lector.setEstado(rs.getBoolean("estado"));
+                    lectores.add(lector);
+                }
+                ps.close();
+            }
+
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
+        }
+         return lectores;
+    }
 
     public List<Libro> ListarLibrosxFecha(Date fecha, int idEjemplar) {
         ArrayList<Libro> libros = new ArrayList<>();
@@ -88,6 +94,7 @@ public class PrestamoData {
               libro.setAnio(rs.getInt("anio"));
               libro.setTitulo(rs.getString("titulo"));
               libro.setEstado(rs.getBoolean("estado"));
+              
               libros.add(libro);
               
             }
