@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 
 public class Prestamo {
-    int idInscripcion;
+    int idPrestamo;
  LocalDate fechaInicio;
  LocalDate fechaFin;
  Ejemplar ejemplar;
@@ -22,8 +22,8 @@ public class Prestamo {
         this.estado = estado;
     }
 
-    public Prestamo(int idInscripcion, LocalDate fechaInicio, LocalDate fechaFin, Ejemplar ejemplar, Lector lector, boolean estado) {
-        this.idInscripcion = idInscripcion;
+    public Prestamo(int idPrestamo, LocalDate fechaInicio, LocalDate fechaFin, Ejemplar ejemplar, Lector lector, boolean estado) {
+        this.idPrestamo = idPrestamo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.ejemplar = ejemplar;
@@ -31,13 +31,15 @@ public class Prestamo {
         this.estado = estado;
     }
 
-    public int getIdInscripcion() {
-        return idInscripcion;
+    public int getIdPrestamo() {
+        return idPrestamo;
     }
 
-    public void setIdInscripcion(int idInscripcion) {
-        this.idInscripcion = idInscripcion;
+    public void setIdPrestamo(int idPrestamo) {
+        this.idPrestamo = idPrestamo;
     }
+
+    
 
     public LocalDate getFechaInicio() {
         return fechaInicio;

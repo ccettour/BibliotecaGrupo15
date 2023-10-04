@@ -32,7 +32,7 @@ public class PrestamoData {
              ps.executeUpdate();
              ResultSet rs=ps.getGeneratedKeys();
              if (rs.next()) {
-                pres.setIdInscripcion(rs.getInt(1));
+                pres.setIdPrestamo(rs.getInt(1));
                  JOptionPane.showMessageDialog(null, "Prestamo creado con exito");
              }
              ps.close();
