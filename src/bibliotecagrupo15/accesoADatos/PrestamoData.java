@@ -46,16 +46,16 @@ public class PrestamoData {
 
     }
 
-    public List<Lector> ListarLectoresxFechaVencida(Date fecha) {
+    public List<Lector> ListarLectoresxFechaVencida() {
         ArrayList<Lector> lectores = new ArrayList<>();
         String sql = "SELECT lec.idLector, nroSocio, lec.nombre, mail "
                 + "FROM `lector` AS lec JOIN prestamo "
-                + "ON lec.idLector=prestamo.idLector WHERE prestamo.fechaFin<?";
+                + "ON lec.idLector=prestamo.idLector WHERE prestamo.fechaFin<date(now())";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, fecha);
+            
             ResultSet rs = ps.executeQuery();
-            if (fecha.after(rs.getDate("fechaFin"))) {
+            
                 while (rs.next()) {
                     Lector lector = new Lector();
                     lector.setIdLector(rs.getInt("idLector"));
@@ -67,7 +67,7 @@ public class PrestamoData {
                     lectores.add(lector);
                 }
                 ps.close();
-            }
+            
 
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
