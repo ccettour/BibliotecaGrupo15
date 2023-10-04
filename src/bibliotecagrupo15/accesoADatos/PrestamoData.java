@@ -4,6 +4,7 @@ import bibliotecagrupo15.entidades.Libro;
 import bibliotecagrupo15.entidades.Lector;
 import bibliotecagrupo15.entidades.Prestamo;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -46,6 +47,32 @@ public class PrestamoData {
     }
     
 //    modificar
+    public void modificarprestamo(Prestamo prestamo){
+    String sql="UPDATE `prestamo` SET `fechaInicio`=? ,`fechaFin`=?,`idEjemplar`=?,`idLector`=?,"
+            + "`estado`=? WHERE idPrestamo=? ";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setDate(1, Date.valueOf(prestamo.getFechaInicio()));
+            ps.setDate(2, Date.valueOf(prestamo.getFechaFin()));
+            ps.setInt(3, prestamo.getEjemplar().getIdEjemplar());
+            ps.setInt(4, prestamo.getLector().getIdLector());
+            ps.setBoolean(5, prestamo.isEstado());
+            int exito=ps.executeUpdate();
+            
+            if (exito==1) {
+                JOptionPane.showMessageDialog(null, "Prestamo modificado");
+            }else{
+              JOptionPane.showMessageDialog(null, "Prestamo inexistente");
+            }
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
+        }
+    
+    }
+    
+    
 //    eliminar
 //    listar
 
