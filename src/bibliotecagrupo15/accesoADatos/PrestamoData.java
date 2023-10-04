@@ -31,7 +31,7 @@ public class PrestamoData {
             ps.setDate(2, Date.valueOf(pres.getFechaFin()));
             ps.setBoolean(3, true);
             ps.setInt(4, pres.getEjemplar().getIdEjemplar());
-            ps.setInt(5, pres.getLector());
+            ps.setInt(5, pres.getLector().getIdLector());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
