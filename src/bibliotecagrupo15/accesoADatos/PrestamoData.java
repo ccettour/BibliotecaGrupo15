@@ -4,7 +4,6 @@ import bibliotecagrupo15.entidades.Libro;
 import bibliotecagrupo15.entidades.Lector;
 import bibliotecagrupo15.entidades.Prestamo;
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -45,6 +44,10 @@ public class PrestamoData {
         }
 
     }
+    
+//    modificar
+//    eliminar
+//    listar
 
     public List<Lector> ListarLectoresxFechaVencida() {
         ArrayList<Lector> lectores = new ArrayList<>();
