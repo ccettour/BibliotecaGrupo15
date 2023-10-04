@@ -74,6 +74,26 @@ public class PrestamoData {
     
     
 //    eliminar
+    public void cancelarPrestamo(int id){
+    String sql="UPDATE `prestamo` SET `estado`= 0 WHERE idPrestamo=?";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+             int exito=ps.executeUpdate();
+            
+            if (exito==1) {
+                JOptionPane.showMessageDialog(null, "Prestamo cancelado con exito");
+            }else{
+              JOptionPane.showMessageDialog(null, "Prestamo inexistente");
+            }
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
+        }
+    
+    
+    }
+    
 //    listar
 
     public List<Lector> ListarLectoresxFechaVencida() {
