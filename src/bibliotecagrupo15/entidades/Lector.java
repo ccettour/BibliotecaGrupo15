@@ -2,7 +2,7 @@ package bibliotecagrupo15.entidades;
 
 public class Lector {
 
-private int idLector;
+    private int idLector;
     private int socio;
     private String nombre;
     private String domicilio;
@@ -19,11 +19,9 @@ private int idLector;
         this.mail = mail;
         this.estado = estado;
     }
-    
-    
 
-    public Lector(int idLector,int socio, String nombre, String domicilio, String mail, boolean estado) {
-        this.idLector=idLector;
+    public Lector(int idLector, int socio, String nombre, String domicilio, String mail, boolean estado) {
+        this.idLector = idLector;
         this.socio = socio;
         this.nombre = nombre;
         this.domicilio = domicilio;
@@ -38,7 +36,6 @@ private int idLector;
     public void setIdLector(int idLector) {
         this.idLector = idLector;
     }
-    
 
     public int getSocio() {
         return socio;
@@ -81,11 +78,11 @@ private int idLector;
     }
 
     public void activarLector(Lector II) {
-estado =true;
+        estado = true;
     }
 
-    public void desactivarLector(Lector I){
-        estado=false;
-        
-}
+    public void desactivarLector(Lector I) {
+        estado = false;
+
+    }
 }

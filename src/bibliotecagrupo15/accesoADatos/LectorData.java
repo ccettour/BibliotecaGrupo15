@@ -40,7 +40,34 @@ public class LectorData {
 
         }
     }
+    public Lector buscarLector(int idLector) {
+        Lector lector = null;
+        String sql = "SELECT nroSocio,nombre,domicilio,mail FROM lector WHERE idLector=? AND estado=1";
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idLector);
 
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                lector = new Lector();
+                lector.setIdLector(idLector);
+                lector.setSocio(rs.getInt("nroSocio"));
+                lector.setNombre("nombre");
+                lector.setMail("mail");
+                lector.setEstado(true);
+                JOptionPane.showMessageDialog(null,"lector encontrado");
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el lector");
+            }
+            ps.close();
+        } catch (SQLException x) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + x.getMessage());
+
+        }
+        return lector;
+
+    }
     public void modificarLector(Lector lector) {
         String sql = "UPDATE lector SET nombre=?,domicilio=?,mail=?,estado=? WHERE nroSocio=?";
         PreparedStatement ps = null;
