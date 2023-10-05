@@ -15,7 +15,7 @@ public class PrestamoData {
     private Connection con = null;
     private LectorData ld = new LectorData();
     private EjemplarData ed = new EjemplarData();
-
+    private AutorData ad=new AutorData();
     public PrestamoData() {
         con = Conexion.getConexion();
     }
@@ -163,7 +163,9 @@ public class PrestamoData {
                 libro.setAnio(rs.getInt("anio"));
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setEstado(rs.getBoolean("estado"));
-
+                libro.setAutor(ad.buscarAutor(rs.getInt("idAutor")));
+                libro.setCantidadEjemplares(rs.getInt("cantidadEjemplares"));
+                libro.setTipo(rs.getString("tipo"));
                 libros.add(libro);
 
             }
