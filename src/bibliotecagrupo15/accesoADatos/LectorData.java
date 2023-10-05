@@ -125,8 +125,8 @@ public class LectorData {
                 Lector lector = new Lector();
                 lector.setIdLector(rs.getInt("idLector"));
                 lector.setSocio(rs.getInt("nroSocio"));
-                lector.setNombre("nombre");
-                lector.setMail("mail");
+                lector.setNombre(rs.getString("nombre"));
+                lector.setMail(rs.getString("mail"));
                 lector.setEstado(true);
                 lectores.add(lector);
             }
