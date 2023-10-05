@@ -1,7 +1,6 @@
 package bibliotecagrupo15.accesoADatos;
 
 import bibliotecagrupo15.entidades.Autor;
-import bibliotecagrupo15.entidades.Libro;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class AutorData {
     }
     
     public void guardarAutor(Autor autor) {
-        String sql = "INSERT INTO autor (identificacion, fechaNacimiento, nacionalidad)"
+        String sql = "INSERT INTO autor (identificacion, fechaNacimiento, nacionalidad,estado)"
                 + "VALUES (?, ?, ?, ?)";
 
         try {
@@ -25,6 +24,7 @@ public class AutorData {
             ps.setString(1, autor.getIdentificacion());
             ps.setDate(2, Date.valueOf(autor.getFechaNacimiento()));
             ps.setString(3, autor.getNacionalidad());
+            ps.setBoolean(4, true);
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -39,7 +39,7 @@ public class AutorData {
     }
     
     public Autor buscarAutor(int id) {
-        String sql = "SELECT identificacion, fechaNacimiento, nacionalidad FROM autor WHERE idAutor=?";
+        String sql = "SELECT identificacion, fechaNacimiento, nacionalidad, estado FROM autor WHERE idAutor=?";
         Autor autor = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);
