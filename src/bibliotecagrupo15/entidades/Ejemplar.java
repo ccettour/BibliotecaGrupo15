@@ -4,16 +4,16 @@ public class Ejemplar {
  int idEjemplar;   
  int codigo;
  Libro libro;
- boolean estado;
+ int estado;
 
-    public Ejemplar(int idEjemplar, int codigo, Libro libro, boolean estado) {
+    public Ejemplar(int idEjemplar, int codigo, Libro libro, int estado) {
         this.idEjemplar = idEjemplar;
         this.codigo = codigo;
         this.libro = libro;
         this.estado = estado;
     }
 
-    public Ejemplar(int codigo, Libro libro, boolean estado) {
+    public Ejemplar(int codigo, Libro libro, int estado) {
         this.codigo = codigo;
         this.libro = libro;
         this.estado = estado;
@@ -46,13 +46,15 @@ public class Ejemplar {
         this.libro = libro;
     }
 
-    public boolean isEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
+
+    
 
     @Override
     public String toString() {
