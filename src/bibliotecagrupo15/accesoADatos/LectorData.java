@@ -130,8 +130,9 @@ public class LectorData {
                 lector.setEstado(true);
                 lectores.add(lector);
             }
+            ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de alumnos");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
         }
         return lectores;
 

@@ -53,5 +53,10 @@ public class Ejemplar {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Ejemplar{" + "idEjemplar=" + idEjemplar + ", codigo=" + codigo + ", libro=" + libro + ", estado=" + estado + '}';
+    }
  
 }

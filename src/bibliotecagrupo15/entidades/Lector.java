@@ -87,5 +87,10 @@ estado =true;
         estado=false;
         
 }
+
+    @Override
+    public String toString() {
+        return "Lector{" + "idLector=" + idLector + ", socio=" + socio + ", nombre=" + nombre + ", domicilio=" + domicilio + ", mail=" + mail + ", estado=" + estado + '}';
+    }
 }
 
