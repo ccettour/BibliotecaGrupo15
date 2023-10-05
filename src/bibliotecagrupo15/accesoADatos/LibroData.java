@@ -70,6 +70,34 @@ public class LibroData {
         }
     }
 
+    public Libro buscarLibro(int id) {
+        String sql = "SELECT * FROM libro WHERE idLibro= ?";
+        Libro libro = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                libro = new Libro();
+                libro.setIdLibro(id);
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(autorD.buscarAutor(rs.getInt("idAutor")));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(rs.getString("tipo"));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setCantidadEjemplares(rs.getInt("cantidadEjemplares"));
+                libro.setEstado(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Libro no encontrado");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Libro");
+        }
+        return libro;
+    }
+
     public void deshabilitarLibro(int id) {
         String sql = "UPDATE libro SET estado = 0 WHERE idLibro= ?";
 
