@@ -1,11 +1,13 @@
 package bibliotecagrupo15.accesoADatos;
 
 import bibliotecagrupo15.entidades.Lector;
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class LectorData {
@@ -68,6 +70,30 @@ public class LectorData {
         return lector;
 
     }
+    public List <Lector> listarLectores(){
+      String sql="SELECT* FROM lector WHERE estado=1";
+     ArrayList<Lector> lectores=new ArrayList<>();
+        try {
+         
+         PreparedStatement ps=con.prepareStatement(sql);
+         ResultSet rs=ps.executeQuery();
+         while(rs.next()){
+        Lector lector=new Lector();
+        lector.setIdLector(idLector);
+                lector.setSocio(rs.getInt("nroSocio"));
+                lector.setNombre("nombre");
+                lector.setMail("mail");
+                lector.setEstado(true);
+                lectores.
+        }
+        } catch (Exception e) {
+        }
+
+
+}
+
+
+
     public void modificarLector(Lector lector) {
         String sql = "UPDATE lector SET nombre=?,domicilio=?,mail=?,estado=? WHERE nroSocio=?";
         PreparedStatement ps = null;

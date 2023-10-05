@@ -16,9 +16,9 @@ public class BibliotecaGrupo15 {
   // ld.guardarLector(lector);
     //ld.eliminarLector(lector);
     //Lector lector =new Lector(2345,"Jorge Sanchez","Pedernera 841","JSanchez@gmail.com",true);
-    LectorData ld2=new LectorData();
+//    LectorData ld2=new LectorData();
    // ld2.guardarLector(lector);
-    ld2.buscarLector(3);
+  //  ld2.buscarLector(3);
         
     } 
 }
