@@ -118,7 +118,6 @@ public class LectorData {
         String sql = "SELECT* FROM lector WHERE estado=1";
         ArrayList<Lector> lectores = new ArrayList<>();
         try {
-
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -127,6 +126,7 @@ public class LectorData {
                 lector.setNombre(rs.getString("nombre"));
                 lector.setMail(rs.getString("mail"));
                 lector.setEstado(true);
+                lector.setDomicilio(rs.getString("domicilio"));
                 lectores.add(lector);
             }
             ps.close();
