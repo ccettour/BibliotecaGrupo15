@@ -30,7 +30,7 @@ public class PrestamoData {
             ps.setDate(2, Date.valueOf(pres.getFechaFin()));
             ps.setBoolean(3, true);
             ps.setInt(4, pres.getEjemplar().getCodigo());
-            ps.setInt(5, pres.getLector().getIdLector());
+            ps.setInt(5, pres.getLector().getSocio());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -53,8 +53,8 @@ public class PrestamoData {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1, Date.valueOf(prestamo.getFechaInicio()));
             ps.setDate(2, Date.valueOf(prestamo.getFechaFin()));
-            ps.setInt(3, prestamo.getEjemplar().getIdEjemplar());
-            ps.setInt(4, prestamo.getLector().getIdLector());
+            ps.setInt(3, prestamo.getEjemplar().getCodigo());
+            ps.setInt(4, prestamo.getLector().getSocio());
             ps.setBoolean(5, prestamo.isEstado());
             int exito = ps.executeUpdate();
 
@@ -128,7 +128,7 @@ public class PrestamoData {
 
             while (rs.next()) {
                 Lector lector = new Lector();
-                lector.setIdLector(rs.getInt("idLector"));
+                lector.setSocio(rs.getInt("idLector"));
                 lector.setDomicilio(rs.getString("domicilio"));
                 lector.setMail(rs.getString("mail"));
                 lector.setNombre(rs.getString("nombre"));
@@ -164,7 +164,6 @@ public class PrestamoData {
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setEstado(rs.getBoolean("estado"));
                 libro.setAutor(ad.buscarAutor(rs.getInt("idAutor")));
-                libro.setCantidadEjemplares(rs.getInt("cantidadEjemplares"));
                 libro.setTipo(rs.getString("tipo"));
                 libros.add(libro);
 
