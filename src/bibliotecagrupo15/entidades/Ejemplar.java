@@ -1,17 +1,10 @@
 package bibliotecagrupo15.entidades;
 
-public class Ejemplar {
- int idEjemplar;   
+public class Ejemplar {  
  int codigo;
  Libro libro;
  int estado;
 
-    public Ejemplar(int idEjemplar, int codigo, Libro libro, int estado) {
-        this.idEjemplar = idEjemplar;
-        this.codigo = codigo;
-        this.libro = libro;
-        this.estado = estado;
-    }
 
     public Ejemplar(int codigo, Libro libro, int estado) {
         this.codigo = codigo;
@@ -19,16 +12,15 @@ public class Ejemplar {
         this.estado = estado;
     }
 
+    public Ejemplar(Libro libro, int estado) {
+        this.libro = libro;
+        this.estado = estado;
+    }
+
+    
     public Ejemplar() {
     }
 
-    public int getIdEjemplar() {
-        return idEjemplar;
-    }
-
-    public void setIdEjemplar(int idEjemplar) {
-        this.idEjemplar = idEjemplar;
-    }
 
     public int getCodigo() {
         return codigo;
@@ -58,7 +50,7 @@ public class Ejemplar {
 
     @Override
     public String toString() {
-        return "Ejemplar{" + "idEjemplar=" + idEjemplar + ", codigo=" + codigo + ", libro=" + libro + ", estado=" + estado + '}';
+        return "Ejemplar{" + " codigo=" + codigo + ", libro=" + libro + ", estado=" + estado + '}';
     }
  
 }

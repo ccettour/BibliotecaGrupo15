@@ -13,18 +13,17 @@ public class EjemplarData {
     }
     
     public void crearEjemplar(Ejemplar ejemplar){
-        String sql = "INSERT INTO ejemplar(codigo, idLibro, estado) VALUES (?,?,?)";
+        String sql = "INSERT INTO ejemplar(idLibro, estado) VALUES (?,?)";
         
         try{
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, ejemplar.getCodigo());
-            ps.setInt(2, ejemplar.getLibro().getIdLibro());
-            ps.setInt(3, ejemplar.getEstado());
+            ps.setInt(1, ejemplar.getLibro().getIdLibro());
+            ps.setInt(2, ejemplar.getEstado());
             ps.executeUpdate();
             
             ResultSet exito = ps.getGeneratedKeys();
             if(exito.next()){
-                ejemplar.setIdEjemplar(exito.getInt(1));
+                ejemplar.setCodigo(exito.getInt(1));
                 JOptionPane.showMessageDialog(null, "Ejemplar creado");
             }
             ps.close();
