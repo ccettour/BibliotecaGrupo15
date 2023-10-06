@@ -16,8 +16,8 @@ public class LibroData {
     }
 
     public void guardarLibro(Libro libro) {
-        String sql = "INSERT INTO libro(isbn, titulo, idAutor, anio, tipo, editorial, cantidadEjemplares, estado) "
-                + "VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO libro(isbn, titulo, idAutor, anio, tipo, editorial, estado) "
+                + "VALUES (?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -27,7 +27,7 @@ public class LibroData {
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditorial());
-            ps.setInt(7, libro.getCantidadEjemplares());
+            
             ps.setBoolean(8, libro.isEstado());
             ps.executeUpdate();
 
@@ -44,7 +44,7 @@ public class LibroData {
     }
 
     public void modificarLibro(Libro libro) {
-        String sql = "UPDATE libro SET isbn=?,titulo=?,idAutor=?,anio=?,tipo=?,editorial=?,cantidadEjemplares=? WHERE idLibro=?";
+        String sql = "UPDATE libro SET isbn=?,titulo=?,idAutor=?,anio=?,tipo=?,editorial=? WHERE idLibro=?";
         PreparedStatement ps = null;
 
         try {
@@ -55,7 +55,6 @@ public class LibroData {
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditorial());
-            ps.setInt(7, libro.getCantidadEjemplares());
             ps.setInt(8, libro.getIdLibro());
             int exito = ps.executeUpdate();
 
@@ -119,8 +118,7 @@ public class LibroData {
                 libro.setAutor(autorD.buscarAutor(rs.getInt("idAutor")));
                 libro.setAnio(rs.getInt("anio"));
                 libro.setTipo(rs.getString("tipo"));
-                libro.setEditorial(rs.getString("editorial"));
-                libro.setCantidadEjemplares(rs.getInt("cantidadEjemplares"));
+                libro.setEditorial(rs.getString("editorial"));      
                 libro.setEstado(true);
 
                 libros.add(libro);
@@ -152,7 +150,6 @@ public class LibroData {
                 libro.setAnio(rs.getInt("anio"));
                 libro.setTipo(rs.getString("tipo"));
                 libro.setEditorial(rs.getString("editorial"));
-                libro.setCantidadEjemplares(rs.getInt("cantidadEjemplares"));
                 libro.setEstado(true);
 
                 libros.add(libro);
