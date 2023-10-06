@@ -55,7 +55,7 @@ public class LectorData {
             if (rs.next()) {
                 lector = new Lector();
                 lector.setSocio(idLector);
-                lector.setSocio(rs.getInt("nroSocio"));
+                lector.setDomicilio(rs.getString("domicilio"));
                 lector.setNombre("nombre");
                 lector.setMail("mail");
                 lector.setEstado(true);
