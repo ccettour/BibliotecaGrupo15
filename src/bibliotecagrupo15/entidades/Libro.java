@@ -9,24 +9,23 @@ public class Libro {
     private int anio;
     private String tipo;
     private String editorial;
-    private int cantidadEjemplares;
+    
     private boolean estado;
 
     public Libro() {
     }
 
-    public Libro(int isbn, String titulo, Autor autor, int anio, String tipo, String editorial, int cantidadEjemplares, boolean estado) {
+    public Libro(int isbn, String titulo, Autor autor, int anio, String tipo, String editorial, boolean estado) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
         this.anio = anio;
         this.tipo = tipo;
         this.editorial = editorial;
-        this.cantidadEjemplares = cantidadEjemplares;
         this.estado = estado;
     }
 
-    public Libro(int idLibro, int isbn, String titulo, Autor autor, int anio, String tipo, String editorial, int cantidadEjemplares, boolean estado) {
+    public Libro(int idLibro, int isbn, String titulo, Autor autor, int anio, String tipo, String editorial, boolean estado) {
         this.idLibro = idLibro;
         this.isbn = isbn;
         this.titulo = titulo;
@@ -34,7 +33,6 @@ public class Libro {
         this.anio = anio;
         this.tipo = tipo;
         this.editorial = editorial;
-        this.cantidadEjemplares = cantidadEjemplares;
         this.estado = estado;
     }
 
@@ -93,15 +91,7 @@ public class Libro {
     public void setEditorial(String editorial) {
         this.editorial = editorial;
     }
-
-    public int getCantidadEjemplares() {
-        return cantidadEjemplares;
-    }
-
-    public void setCantidadEjemplares(int cantidadEjemplares) {
-        this.cantidadEjemplares = cantidadEjemplares;
-    }
-
+  
     public boolean isEstado() {
         return estado;
     }
