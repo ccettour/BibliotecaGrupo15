@@ -1,13 +1,11 @@
 package bibliotecagrupo15.entidades;
 
 public class Ejemplar {
-    int idEjemplar;
     int codigo;
     Libro libro;
-    int estado;
+    int estado; //disponible, prestado, retraso, reparación
 
-    public Ejemplar(int codigo, Libro libro, int estado) {
-        this.codigo = codigo;
+    public Ejemplar(Libro libro, int estado) {
         this.libro = libro;
         this.estado = estado;
     }
@@ -15,19 +13,10 @@ public class Ejemplar {
     public Ejemplar() {
     }
 
-    public Ejemplar(int idEjemplar, int codigo, Libro libro, int estado) {
-        this.idEjemplar = idEjemplar;
+    public Ejemplar(int codigo, Libro libro, int estado) {
         this.codigo = codigo;
         this.libro = libro;
         this.estado = estado;
-    }
-
-    public int getIdEjemplar() {
-        return idEjemplar;
-    }
-
-    public void setIdEjemplar(int idEjemplar) {
-        this.idEjemplar = idEjemplar;
     }
 
     public int getCodigo() {

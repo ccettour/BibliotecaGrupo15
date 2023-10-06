@@ -14,6 +14,7 @@ public class BibliotecaGrupo15 {
         
         LibroData ld = new LibroData();
         AutorData ad = new AutorData();
+        EjemplarData ed = new EjemplarData();
         
         //CREAR AUTOR
         Autor silberschatz=new Autor("Abraham Silberschatz",LocalDate.of(1947, 5, 1),"Estadounidense",true);
@@ -41,18 +42,18 @@ public class BibliotecaGrupo15 {
         
         
         //LISTAR AUTORES
-        for (Autor a : ad.ListarAutores()) {
+        /*for (Autor a : ad.ListarAutores()) {
             System.out.println(a);
-        }
+        }*/
         
         
         //CREAR LIBRO
-        Libro libro = new Libro(48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, "informática", "Mcgraw-Hill", 5, true);
-        Libro libro1 = new Libro(78290850, "Fundamentos de Sistemas de Bases de Datos", ad.buscarAutor(3), 2007, "informática", "Addison-Wesley", 4, true);
-        Libro libro2 = new Libro(97860715, "Fundamentos de Programacion", ad.buscarAutor(2), 2020, "informática", "Mcgraw-Hill", 6, true);
-        Libro libro3 = new Libro(98752277, "Martin Fierro", ad.buscarAutor(4), 2010, "poesía", "Visor", 10, true);
-        Libro libro4 = new Libro(96844431, "Sistemas operativos", ad.buscarAutor(1), 2000, "informática", "ADDISON WESLEY LONGMAN", 3, true);
-        Libro libro5 = new Libro(97884291, "Sistemas operativos. Conceptos fundamentales", ad.buscarAutor(1), 1994, "informática", "Editorial Reverté", 2, true);
+        Libro libro = new Libro(48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, "informática", "Mcgraw-Hill", true);
+        Libro libro1 = new Libro(78290850, "Fundamentos de Sistemas de Bases de Datos", ad.buscarAutor(3), 2007, "informática", "Addison-Wesley", true);
+        Libro libro2 = new Libro(97860715, "Fundamentos de Programacion", ad.buscarAutor(2), 2020, "informática", "Mcgraw-Hill", true);
+        Libro libro3 = new Libro(98752277, "Martin Fierro", ad.buscarAutor(4), 2010, "poesía", "Visor", true);
+        Libro libro4 = new Libro(96844431, "Sistemas operativos", ad.buscarAutor(1), 2000, "informática", "ADDISON WESLEY LONGMAN", true);
+        Libro libro5 = new Libro(97884291, "Sistemas operativos. Conceptos fundamentales", ad.buscarAutor(1), 1994, "informática", "Editorial Reverté", true);
         //ld.guardarLibro(libro);
         //ld.guardarLibro(libro1);
         //ld.guardarLibro(libro2);
@@ -62,10 +63,14 @@ public class BibliotecaGrupo15 {
         
         
         //MODIFICAR LIBRO
-        Libro modif = new Libro(5,48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, "informática", "McGraw Hill", 3, true);
+        Libro modif = new Libro(5,48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, "informática", "McGraw Hill", true);
         //ld.modificarLibro(modif);
         
-       
+        
+        //BUSCAR LIBRO
+        //System.out.println(ld.buscarLibro(8));
+        
+        
         //ELIMINAR/DESHABILITAR LIBRO
         //ld.deshabilitarLibro(8);
         
@@ -84,6 +89,11 @@ public class BibliotecaGrupo15 {
         /*for (Libro l : ld.listarLibrosXAutor(ad.buscarAutor(1))) {
             System.out.println(l);
         }*/
+        
+        
+        //CREAR EJEMPLAR
+        Ejemplar ejemplar = new Ejemplar(318, ld.buscarLibro(8), 0);
+        ed.crearEjemplar(ejemplar);
     }
     
 }

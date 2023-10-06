@@ -16,7 +16,7 @@ public class LibroData {
     }
 
     public void guardarLibro(Libro libro) {
-        String sql = "INSERT INTO libro(isbn, titulo, idAutor, anio, tipo, editorial, cantidadEjemplares, estado) "
+        String sql = "INSERT INTO libro(isbn, titulo, idAutor, anio, tipo, editorial, estado) "
                 + "VALUES (?,?,?,?,?,?,?,?)";
 
         try {
@@ -27,7 +27,6 @@ public class LibroData {
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditorial());
-            ps.setInt(7, libro.getCantidadEjemplares());
             ps.setBoolean(8, libro.isEstado());
             ps.executeUpdate();
 
@@ -52,10 +51,10 @@ public class LibroData {
             ps.setInt(1, libro.getIsbn());
             ps.setString(2, libro.getTitulo());
             ps.setInt(3, libro.getAutor().getIdAutor());
+            
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditorial());
-            ps.setInt(7, libro.getCantidadEjemplares());
             ps.setInt(8, libro.getIdLibro());
             int exito = ps.executeUpdate();
 
@@ -86,7 +85,6 @@ public class LibroData {
                 libro.setAnio(rs.getInt("anio"));
                 libro.setTipo(rs.getString("tipo"));
                 libro.setEditorial(rs.getString("editorial"));
-                libro.setCantidadEjemplares(rs.getInt("cantidadEjemplares"));
                 libro.setEstado(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Libro no encontrado");
@@ -148,7 +146,6 @@ public class LibroData {
                 libro.setAnio(rs.getInt("anio"));
                 libro.setTipo(rs.getString("tipo"));
                 libro.setEditorial(rs.getString("editorial"));
-                libro.setCantidadEjemplares(rs.getInt("cantidadEjemplares"));
                 libro.setEstado(true);
 
                 libros.add(libro);
@@ -180,7 +177,6 @@ public class LibroData {
                 libro.setAnio(rs.getInt("anio"));
                 libro.setTipo(rs.getString("tipo"));
                 libro.setEditorial(rs.getString("editorial"));
-                libro.setCantidadEjemplares(rs.getInt("cantidadEjemplares"));
                 libro.setEstado(true);
 
                 libros.add(libro);
