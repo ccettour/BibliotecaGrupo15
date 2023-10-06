@@ -128,11 +128,10 @@ public class PrestamoData {
 
             while (rs.next()) {
                 Lector lector = new Lector();
-                lector.setSocio(rs.getInt("idLector"));
+                lector.setSocio(rs.getInt("nroSocio"));
                 lector.setDomicilio(rs.getString("domicilio"));
                 lector.setMail(rs.getString("mail"));
                 lector.setNombre(rs.getString("nombre"));
-                lector.setSocio(rs.getInt("nroSocio"));
                 lector.setEstado(rs.getBoolean("estado"));
                 lectores.add(lector);
             }
