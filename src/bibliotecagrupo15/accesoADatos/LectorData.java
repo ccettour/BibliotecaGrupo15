@@ -20,20 +20,20 @@ public class LectorData {
     }
 
     public void guardarLector(Lector lector) {
-        String sql = "INSERT INTO lector(nroSocio,nombre,domicilio,mail,estado)"
-                + "VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO lector(nombre,domicilio,mail,estado)"
+                + "VALUES(?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, lector.getSocio());
-            ps.setString(2, lector.getNombre());
-            ps.setString(3, lector.getDomicilio());
-            ps.setString(4, lector.getMail());
-            ps.setBoolean(5, lector.isEstado());
+           
+            ps.setString(1, lector.getNombre());
+            ps.setString(2, lector.getDomicilio());
+            ps.setString(3, lector.getMail());
+            ps.setBoolean(4, lector.isEstado());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                lector.setIdLector(rs.getInt(1));
+                lector.setSocio(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Lector añadido con exito");
             }
             ps.close();
@@ -45,7 +45,7 @@ public class LectorData {
 
     public Lector buscarLector(int idLector) {
         Lector lector = null;
-        String sql = "SELECT nroSocio,nombre,domicilio,mail FROM lector WHERE idLector=? AND estado=1";
+        String sql = "SELECT nombre,domicilio,mail FROM lector WHERE nroSocio=? AND estado=1";
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(sql);
@@ -54,7 +54,7 @@ public class LectorData {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 lector = new Lector();
-                lector.setIdLector(idLector);
+                lector.setSocio(idLector);
                 lector.setSocio(rs.getInt("nroSocio"));
                 lector.setNombre("nombre");
                 lector.setMail("mail");
@@ -123,7 +123,6 @@ public class LectorData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Lector lector = new Lector();
-                lector.setIdLector(rs.getInt("idLector"));
                 lector.setSocio(rs.getInt("nroSocio"));
                 lector.setNombre(rs.getString("nombre"));
                 lector.setMail(rs.getString("mail"));
