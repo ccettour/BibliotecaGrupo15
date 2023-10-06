@@ -4,7 +4,6 @@
  */
 package bibliotecagrupo15.accesoADatos;
 import bibliotecagrupo15.entidades.Autor;
-import bibliotecagrupo15.entidades.Libro;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
