@@ -118,7 +118,7 @@ public class PrestamoData {
 
     public List<Lector> ListarLectoresxFechaVencida() {
         ArrayList<Lector> lectores = new ArrayList<>();
-        String sql = "SELECT lec.idLector, nroSocio, lec.nombre, mail "
+        String sql = "SELECT nroSocio, lec.nombre, mail "
                 + "FROM `lector` AS lec JOIN prestamo "
                 + "ON lec.idLector=prestamo.idLector WHERE prestamo.fechaFin<date(now())";
         try {
