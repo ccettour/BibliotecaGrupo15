@@ -55,11 +55,11 @@ public class BibliotecaGrupo15 {
         Libro libro4 = new Libro(96844431, "Sistemas operativos", ad.buscarAutor(1), 2000, "informática", "ADDISON WESLEY LONGMAN", true);
         Libro libro5 = new Libro(97884291, "Sistemas operativos. Conceptos fundamentales", ad.buscarAutor(1), 1994, "informática", "Editorial Reverté", true);
         //ld.guardarLibro(libro);
-        //ld.guardarLibro(libro1);
-        //ld.guardarLibro(libro2);
-        //ld.guardarLibro(libro3);
-        //ld.guardarLibro(libro4);
-        //ld.guardarLibro(libro5);
+//        ld.guardarLibro(libro1);
+//        ld.guardarLibro(libro2);
+//        ld.guardarLibro(libro3);
+//        ld.guardarLibro(libro4);
+//        ld.guardarLibro(libro5);
         
         
         //MODIFICAR LIBRO
@@ -92,8 +92,23 @@ public class BibliotecaGrupo15 {
         
         
         //CREAR EJEMPLAR
-        Ejemplar ejemplar = new Ejemplar(318, ld.buscarLibro(8), 0);
-        ed.crearEjemplar(ejemplar);
+        Ejemplar ejemplar = new Ejemplar(ld.buscarLibro(15), 0);
+        Ejemplar ejemplar1 = new Ejemplar(ld.buscarLibro(15),0);
+        Ejemplar ejemplar2 = new Ejemplar(ld.buscarLibro(15),0);
+        Ejemplar ejemplar3 = new Ejemplar(ld.buscarLibro(16),0);
+        Ejemplar ejemplar4 = new Ejemplar(ld.buscarLibro(16),0);
+        Ejemplar ejemplar5 = new Ejemplar(ld.buscarLibro(16),2);
+//        ed.crearEjemplar(ejemplar);
+//        ed.crearEjemplar(ejemplar1);
+//        ed.crearEjemplar(ejemplar2);
+//        ed.crearEjemplar(ejemplar3);
+//        ed.crearEjemplar(ejemplar4);
+//        ed.crearEjemplar(ejemplar5);
+
+        
+        for (Ejemplar e : ed.listarEjemplares()) {
+            System.out.println(e);
+        }
     }
     
 }

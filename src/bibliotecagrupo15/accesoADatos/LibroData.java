@@ -17,7 +17,7 @@ public class LibroData {
 
     public void guardarLibro(Libro libro) {
         String sql = "INSERT INTO libro(isbn, titulo, idAutor, anio, tipo, editorial, estado) "
-                + "VALUES (?,?,?,?,?,?,?,?)";
+                + "VALUES (?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -27,7 +27,7 @@ public class LibroData {
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditorial());
-            ps.setBoolean(8, libro.isEstado());
+            ps.setBoolean(7, libro.isEstado());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();

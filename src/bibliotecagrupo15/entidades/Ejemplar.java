@@ -3,7 +3,7 @@ package bibliotecagrupo15.entidades;
 public class Ejemplar {
     int codigo;
     Libro libro;
-    int estado; //disponible, prestado, retraso, reparación
+    int estado; //0=disponible, 1=prestado, 2=retraso, 3=reparación, 4=eliminado
 
     public Ejemplar(Libro libro, int estado) {
         this.libro = libro;
@@ -42,5 +42,12 @@ public class Ejemplar {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "" + codigo + " - " + libro.getTitulo();
+    }
+    
+    
 
 }
