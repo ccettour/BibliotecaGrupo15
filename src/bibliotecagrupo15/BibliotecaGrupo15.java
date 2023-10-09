@@ -15,17 +15,18 @@ public class BibliotecaGrupo15 {
         LibroData ld = new LibroData();
         AutorData ad = new AutorData();
         EjemplarData ed = new EjemplarData();
-        
+        PrestamoData pd = new PrestamoData();
+        LectorData lecd = new LectorData();
         //CREAR AUTOR
-        Autor silberschatz=new Autor("Abraham Silberschatz",LocalDate.of(1947, 5, 1),"Estadounidense",true);
-        Autor elmasri =new Autor("Ramez A. Elmasri",LocalDate.of(1950, 10, 20),"Egipcio",true);
-        Autor aguilar=new Autor("Luis Joyanes Aguilar",LocalDate.of(1948, 2, 19),"Español",true);
-        Autor hernandez=new Autor("José Hernández",LocalDate.of(1834, 11, 10),"Argentino",true);
+//        Autor silberschatz=new Autor("Abraham Silberschatz",LocalDate.of(1947, 5, 1),"Estadounidense",true);
+//        Autor elmasri =new Autor("Ramez A. Elmasri",LocalDate.of(1950, 10, 20),"Egipcio",true);
+//        Autor aguilar=new Autor("Luis Joyanes Aguilar",LocalDate.of(1948, 2, 19),"Español",true);
+//        Autor hernandez=new Autor("José Hernández",LocalDate.of(1834, 11, 10),"Argentino",true);
 
-        //ad.guardarAutor(silberschatz);
-        //ad.guardarAutor(aguilar);
-        //ad.guardarAutor(elmasri);
-        //ad.guardarAutor(hernandez);
+//        ad.guardarAutor(silberschatz);
+//        ad.guardarAutor(aguilar);
+//        ad.guardarAutor(elmasri);
+//        ad.guardarAutor(hernandez);
         
         
         //BUSCAR AUTOR
@@ -33,7 +34,7 @@ public class BibliotecaGrupo15 {
         
         
         //MODIFICAR AUTOR
-        Autor modificado=new Autor(2,"Luis Joyanes Aguilar",LocalDate.of(1932, 12, 21),"Español",true);
+//        Autor modificado=new Autor(2,"Luis Joyanes Aguilar",LocalDate.of(1932, 12, 21),"Español",true);
         //ad.modificarAutor(modificado);
         
         
@@ -48,13 +49,13 @@ public class BibliotecaGrupo15 {
         
         
         //CREAR LIBRO
-        Libro libro = new Libro(48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, "informática", "Mcgraw-Hill", true);
-        Libro libro1 = new Libro(78290850, "Fundamentos de Sistemas de Bases de Datos", ad.buscarAutor(3), 2007, "informática", "Addison-Wesley", true);
-        Libro libro2 = new Libro(97860715, "Fundamentos de Programacion", ad.buscarAutor(2), 2020, "informática", "Mcgraw-Hill", true);
-        Libro libro3 = new Libro(98752277, "Martin Fierro", ad.buscarAutor(4), 2010, "poesía", "Visor", true);
-        Libro libro4 = new Libro(96844431, "Sistemas operativos", ad.buscarAutor(1), 2000, "informática", "ADDISON WESLEY LONGMAN", true);
-        Libro libro5 = new Libro(97884291, "Sistemas operativos. Conceptos fundamentales", ad.buscarAutor(1), 1994, "informática", "Editorial Reverté", true);
-        //ld.guardarLibro(libro);
+//        Libro libro = new Libro(48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, "informática", "Mcgraw-Hill", true);
+//        Libro libro1 = new Libro(78290850, "Fundamentos de Sistemas de Bases de Datos", ad.buscarAutor(3), 2007, "informática", "Addison-Wesley", true);
+//        Libro libro2 = new Libro(97860715, "Fundamentos de Programacion", ad.buscarAutor(2), 2020, "informática", "Mcgraw-Hill", true);
+//        Libro libro3 = new Libro(98752277, "Martin Fierro", ad.buscarAutor(4), 2010, "poesía", "Visor", true);
+//        Libro libro4 = new Libro(96844431, "Sistemas operativos", ad.buscarAutor(1), 2000, "informática", "ADDISON WESLEY LONGMAN", true);
+//        Libro libro5 = new Libro(97884291, "Sistemas operativos. Conceptos fundamentales", ad.buscarAutor(1), 1994, "informática", "Editorial Reverté", true);
+//        ld.guardarLibro(libro);
 //        ld.guardarLibro(libro1);
 //        ld.guardarLibro(libro2);
 //        ld.guardarLibro(libro3);
@@ -63,7 +64,7 @@ public class BibliotecaGrupo15 {
         
         
         //MODIFICAR LIBRO
-        Libro modif = new Libro(5,48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, "informática", "McGraw Hill", true);
+//        Libro modif = new Libro(5,48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, "informática", "McGraw Hill", true);
         //ld.modificarLibro(modif);
         
         
@@ -92,12 +93,12 @@ public class BibliotecaGrupo15 {
         
         
         //CREAR EJEMPLAR
-        Ejemplar ejemplar = new Ejemplar(ld.buscarLibro(15), 0);
-        Ejemplar ejemplar1 = new Ejemplar(ld.buscarLibro(15),0);
-        Ejemplar ejemplar2 = new Ejemplar(ld.buscarLibro(15),0);
-        Ejemplar ejemplar3 = new Ejemplar(ld.buscarLibro(16),0);
-        Ejemplar ejemplar4 = new Ejemplar(ld.buscarLibro(16),0);
-        Ejemplar ejemplar5 = new Ejemplar(ld.buscarLibro(16),2);
+//        Ejemplar ejemplar = new Ejemplar(ld.buscarLibro(15), 0);
+//        Ejemplar ejemplar1 = new Ejemplar(ld.buscarLibro(15),0);
+//        Ejemplar ejemplar2 = new Ejemplar(ld.buscarLibro(15),0);
+//        Ejemplar ejemplar3 = new Ejemplar(ld.buscarLibro(16),0);
+//        Ejemplar ejemplar4 = new Ejemplar(ld.buscarLibro(16),0);
+//        Ejemplar ejemplar5 = new Ejemplar(ld.buscarLibro(16),2);
 //        ed.crearEjemplar(ejemplar);
 //        ed.crearEjemplar(ejemplar1);
 //        ed.crearEjemplar(ejemplar2);
@@ -106,9 +107,12 @@ public class BibliotecaGrupo15 {
 //        ed.crearEjemplar(ejemplar5);
 
         
-        for (Ejemplar e : ed.listarEjemplares()) {
-            System.out.println(e);
-        }
+//        for (Ejemplar e : ed.listarEjemplares()) {
+//            System.out.println(e);
+//        }
+        Prestamo prestamo = new Prestamo(LocalDate.of(2023, 6, 21), LocalDate.of(2023, 10, 15), ed.buscarEjemplar(3), lecd.buscarLector(1), true);
+//        pd.crearPrestamo(prestamo);
+prestamo.devolverLibro(ed.buscarEjemplar(3), lecd.buscarLector(1));
     }
     
 }

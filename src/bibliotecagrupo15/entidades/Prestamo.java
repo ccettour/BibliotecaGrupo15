@@ -1,16 +1,19 @@
 package bibliotecagrupo15.entidades;
 
+import bibliotecagrupo15.accesoADatos.EjemplarData;
 import java.time.LocalDate;
 
 public class Prestamo {
+    
+    private int idPrestamo;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
+    private Ejemplar ejemplar;
+    private Lector lector;
+    private boolean estado;
 
-    int idPrestamo;
-    LocalDate fechaInicio;
-    LocalDate fechaFin;
-    Ejemplar ejemplar;
-    Lector lector;
-    boolean estado;
-
+    private EjemplarData ed=new EjemplarData();
+    
     public Prestamo() {
     }
 
@@ -80,11 +83,11 @@ public class Prestamo {
     }
 
     public void solicitarLibro(Ejemplar a, Lector i) {
-        estado = true;
+        ed.modificarEstadoEjemplar(a.getCodigo(), 1);
     }
 
     public void devolverLibro(Ejemplar a, Lector i) {
-        estado = false;
+        ed.modificarEstadoEjemplar(a.getCodigo(), 0);
     }
 
     @Override

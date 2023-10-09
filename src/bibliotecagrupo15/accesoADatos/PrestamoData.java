@@ -6,8 +6,6 @@ import bibliotecagrupo15.entidades.Prestamo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class PrestamoData {
@@ -15,7 +13,8 @@ public class PrestamoData {
     private Connection con = null;
     private LectorData ld = new LectorData();
     private EjemplarData ed = new EjemplarData();
-    private AutorData ad=new AutorData();
+    private AutorData ad = new AutorData();
+
     public PrestamoData() {
         con = Conexion.getConexion();
     }
@@ -37,10 +36,10 @@ public class PrestamoData {
                 pres.setIdPrestamo(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Prestamo creado con exito");
             }
-            
+
             //El estado del ejemplar debe pasar a 1
-            
-            
+            pres.solicitarLibro(ed.buscarEjemplar(pres.getEjemplar().getCodigo()), ld.buscarLector(pres.getLector().getSocio()));
+
             ps.close();
 
         } catch (SQLException ex) {
@@ -87,10 +86,9 @@ public class PrestamoData {
             } else {
                 JOptionPane.showMessageDialog(null, "Prestamo inexistente");
             }
-            
+
             //El estado del ejemplar pasa a 0
             
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
         }

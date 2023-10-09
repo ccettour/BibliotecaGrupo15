@@ -55,11 +55,11 @@ public class LectorData {
             if (rs.next()) {
                 lector = new Lector();
                 lector.setSocio(idLector);
-                lector.setDomicilio(rs.getString("domicilio"));
                 lector.setNombre("nombre");
+                lector.setDomicilio(rs.getString("domicilio"));
                 lector.setMail("mail");
                 lector.setEstado(true);
-                JOptionPane.showMessageDialog(null, "lector encontrado");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el lector");
             }

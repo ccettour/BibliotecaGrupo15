@@ -20,7 +20,7 @@ public class AutorData {
     
     public void guardarAutor(Autor autor) {
         String sql = "INSERT INTO autor (identificacion, fechaNacimiento, nacionalidad)"
-                + "VALUES (?, ?, ?, ?)";
+                + "VALUES (?, ?, ?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
