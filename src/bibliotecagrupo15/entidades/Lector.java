@@ -1,6 +1,7 @@
 package bibliotecagrupo15.entidades;
 
-public class Lector { 
+public class Lector {
+
     private int socio;
     private String nombre;
     private String domicilio;
@@ -10,15 +11,15 @@ public class Lector {
     public Lector() {
     }
 
-    public Lector(int socio, String nombre, String domicilio, String mail, boolean estado) {
-        this.socio = socio;
+    public Lector(String nombre, String domicilio, String mail, boolean estado) {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.mail = mail;
         this.estado = estado;
     }
 
-    public Lector(String nombre, String domicilio, String mail, boolean estado) {
+    public Lector(int socio, String nombre, String domicilio, String mail, boolean estado) {
+        this.socio = socio;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.mail = mail;
@@ -66,17 +67,18 @@ public class Lector {
     }
 
     public void activarLector(Lector II) {
-estado =true;
+        estado = true;
     }
 
-    public void desactivarLector(Lector I){
-        estado=false;
-        
-}
+    public void desactivarLector(Lector I) {
+        estado = false;
+
+    }
 
     @Override
     public String toString() {
-        return "Lector{" + ", socio=" + socio + ", nombre=" + nombre + ", domicilio=" + domicilio + ", mail=" + mail + ", estado=" + estado + '}';
+        return "" + socio + " - " + nombre + ", mail:" + mail;
     }
+    
+    
 }
-

@@ -27,8 +27,7 @@ public class LibroData {
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditorial());
-            
-            ps.setBoolean(8, libro.isEstado());
+            ps.setBoolean(7, libro.isEstado());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -44,7 +43,7 @@ public class LibroData {
     }
 
     public void modificarLibro(Libro libro) {
-        String sql = "UPDATE libro SET isbn=?,titulo=?,idAutor=?,anio=?,tipo=?,editorial=? WHERE idLibro=?";
+        String sql = "UPDATE libro SET isbn=?,titulo=?,idAutor=?,anio=?,tipo=?,editorial=?,cantidadEjemplares=? WHERE idLibro=?";
         PreparedStatement ps = null;
 
         try {
@@ -52,6 +51,7 @@ public class LibroData {
             ps.setInt(1, libro.getIsbn());
             ps.setString(2, libro.getTitulo());
             ps.setInt(3, libro.getAutor().getIdAutor());
+            
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo());
             ps.setString(6, libro.getEditorial());
@@ -67,6 +67,33 @@ public class LibroData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Libro");
         }
+    }
+
+    public Libro buscarLibro(int id) {
+        String sql = "SELECT * FROM libro WHERE idLibro= ?";
+        Libro libro = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                libro = new Libro();
+                libro.setIdLibro(id);
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(autorD.buscarAutor(rs.getInt("idAutor")));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(rs.getString("tipo"));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Libro no encontrado");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Libro");
+        }
+        return libro;
     }
 
     public void deshabilitarLibro(int id) {
@@ -118,7 +145,7 @@ public class LibroData {
                 libro.setAutor(autorD.buscarAutor(rs.getInt("idAutor")));
                 libro.setAnio(rs.getInt("anio"));
                 libro.setTipo(rs.getString("tipo"));
-                libro.setEditorial(rs.getString("editorial"));      
+                libro.setEditorial(rs.getString("editorial"));
                 libro.setEstado(true);
 
                 libros.add(libro);

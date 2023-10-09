@@ -21,22 +21,26 @@ public class PrestamoData {
     }
 
     public void crearPrestamo(Prestamo pres) {
-        String sql = "INSERT INTO `prestamo`(fechaInicio, fechaFin, estado, idEjemplar , idLector) "
+        String sql = "INSERT INTO prestamo (fechaInicio, fechaFin, idEjemplar, idLector, estado) "
                 + "VALUES (?,?,?,?,?)";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setDate(1, Date.valueOf(pres.getFechaInicio()));
             ps.setDate(2, Date.valueOf(pres.getFechaFin()));
-            ps.setBoolean(3, true);
-            ps.setInt(4, pres.getEjemplar().getCodigo());
-            ps.setInt(5, pres.getLector().getSocio());
+            ps.setInt(3, pres.getEjemplar().getCodigo());
+            ps.setInt(4, pres.getLector().getSocio());
+            ps.setBoolean(5, true);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 pres.setIdPrestamo(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Prestamo creado con exito");
             }
+            
+            //El estado del ejemplar debe pasar a 1
+            
+            
             ps.close();
 
         } catch (SQLException ex) {
@@ -83,6 +87,9 @@ public class PrestamoData {
             } else {
                 JOptionPane.showMessageDialog(null, "Prestamo inexistente");
             }
+            
+            //El estado del ejemplar pasa a 0
+            
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
@@ -104,7 +111,7 @@ public class PrestamoData {
                 pres.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
                 pres.setEstado(rs.getBoolean("estado"));
                 pres.setLector(ld.buscarLector(rs.getInt("idLector")));
-                pres.setEjemplar(ejemplar);
+                //pres.setEjemplar(ejemplar);
                 prestamos.add(pres);
             }
             ps.close();
@@ -120,7 +127,7 @@ public class PrestamoData {
         ArrayList<Lector> lectores = new ArrayList<>();
         String sql = "SELECT nroSocio, lec.nombre, mail "
                 + "FROM `lector` AS lec JOIN prestamo "
-                + "ON lec.idLector=prestamo.idLector WHERE prestamo.fechaFin<date(now())";
+                + "ON lec.nroSocio=prestamo.idLector WHERE prestamo.fechaFin<date(now()) AND prestamo.estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -129,10 +136,10 @@ public class PrestamoData {
             while (rs.next()) {
                 Lector lector = new Lector();
                 lector.setSocio(rs.getInt("nroSocio"));
-                lector.setDomicilio(rs.getString("domicilio"));
+                //lector.setDomicilio(rs.getString("domicilio"));
                 lector.setMail(rs.getString("mail"));
                 lector.setNombre(rs.getString("nombre"));
-                lector.setEstado(rs.getBoolean("estado"));
+                //lector.setEstado(rs.getBoolean("estado"));
                 lectores.add(lector);
             }
             ps.close();
