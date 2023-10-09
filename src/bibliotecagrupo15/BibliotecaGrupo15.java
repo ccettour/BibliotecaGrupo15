@@ -15,6 +15,8 @@ public class BibliotecaGrupo15 {
         LibroData ld = new LibroData();
         AutorData ad = new AutorData();
         EjemplarData ed = new EjemplarData();
+        LectorData lecd = new LectorData();
+        PrestamoData pd = new PrestamoData();
         
         //CREAR AUTOR
         Autor silberschatz=new Autor("Abraham Silberschatz",LocalDate.of(1947, 5, 1),"Estadounidense",true);
@@ -106,9 +108,28 @@ public class BibliotecaGrupo15 {
 //        ed.crearEjemplar(ejemplar5);
 
         
-        for (Ejemplar e : ed.listarEjemplares()) {
+        /*for (Ejemplar e : ed.listarEjemplares()) {
             System.out.println(e);
+        }*/
+        
+        Lector lector = new Lector("Mario", "Urquiza 125", "mario@mail.com", true);
+        Lector lector1 = new Lector("Luigi", "Estrada 27", "luigi@mail.com", true);
+        
+        //lecd.guardarLector(lector);
+        //lecd.guardarLector(lector1);
+        
+        Prestamo prestamo = new Prestamo(LocalDate.of(2023, 10, 1), LocalDate.of(2023, 10, 8), ed.buscarEjemplar(5), lecd.buscarLector(1), true);
+        Prestamo prestamo1 = new Prestamo(LocalDate.of(2023, 9, 18), LocalDate.of(2023, 10, 10), ed.buscarEjemplar(7), lecd.buscarLector(2), true);
+    
+        //pd.crearPrestamo(prestamo);
+        //pd.crearPrestamo(prestamo1);
+        
+        
+        for (Lector l : pd.ListarLectoresxFechaVencida()) {
+            System.out.println(l);
         }
+        
+        
     }
     
 }

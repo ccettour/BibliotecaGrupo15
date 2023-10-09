@@ -54,7 +54,7 @@ public class LectorData {
                 lector.setDomicilio("domicilio");
                 lector.setMail("mail");
                 lector.setEstado(true);
-                JOptionPane.showMessageDialog(null, "lector encontrado");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el lector");
             }

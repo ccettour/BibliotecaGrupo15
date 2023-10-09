@@ -74,4 +74,11 @@ public class Lector {
         estado = false;
 
     }
+
+    @Override
+    public String toString() {
+        return "" + socio + " - " + nombre + ", mail:" + mail;
+    }
+    
+    
 }

@@ -59,6 +59,7 @@ public class EjemplarData {
     
     // Para eliminar el estado se establece en 4
     // Para prestar el estado es 1
+    // Para devolución el estado es 0
     public void modificarEstadoEjemplar(int codigo, int estado){
          String sql = "UPDATE ejemplar SET estado=? WHERE codigo=?";
          PreparedStatement ps = null;
