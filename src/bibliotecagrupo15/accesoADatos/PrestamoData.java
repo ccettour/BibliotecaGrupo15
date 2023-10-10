@@ -75,13 +75,13 @@ public class PrestamoData {
 
     }
 
- public Prestamo buscarPrestamo(int id){
-    String sql="SELECT * FROM `prestamo` WHERE idPrestamo=?";
-    Prestamo pres=new Prestamo();
+    public Prestamo buscarPrestamo(int id) {
+        String sql = "SELECT * FROM `prestamo` WHERE idPrestamo=?";
+        Prestamo pres = new Prestamo();
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            ResultSet rs=ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 pres.setIdPrestamo(id);
                 pres.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
@@ -89,19 +89,19 @@ public class PrestamoData {
                 pres.setEjemplar(ed.buscarEjemplar(rs.getInt("idEjemplar")));
                 pres.setLector(ld.buscarLector(rs.getInt("idLector")));
                 pres.setEstado(true);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Prestamo no encontrado");
             }
-            
+
             ps.close();
         } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
         }
-     
-    return pres;
+
+        return pres;
     }
- 
- //    eliminar
+
+    //    eliminar
     public void cancelarPrestamo(int id) {
         String sql = "UPDATE `prestamo` SET `estado`= 0 WHERE idPrestamo=?";
         try {
@@ -116,15 +116,15 @@ public class PrestamoData {
             }
 
             //El estado del ejemplar pasa a 0
-            Prestamo pres= buscarPrestamo(id);
+            Prestamo pres = buscarPrestamo(id);
             pres.devolverLibro(pres.getEjemplar(), pres.getLector());
-            
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
         }
 
     }
-    
+
 //    listar
     public List<Prestamo> ListarPrestamos() {
         ArrayList<Prestamo> prestamos = new ArrayList<>();
@@ -139,7 +139,7 @@ public class PrestamoData {
                 pres.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
                 pres.setEstado(rs.getBoolean("estado"));
                 pres.setLector(ld.buscarLector(rs.getInt("idLector")));
-                //pres.setEjemplar(ejemplar);
+                pres.setEjemplar(ed.buscarEjemplar(rs.getInt("idEjemplar")));
                 prestamos.add(pres);
             }
             ps.close();
@@ -149,6 +149,60 @@ public class PrestamoData {
         }
 
         return prestamos;
+    }
+
+    public List<Lector> ListarLectoresxPrestamoActivo() {
+        ArrayList<Lector> lectores = new ArrayList<>();
+        String sql = "SELECT nroSocio, lec.nombre, mail "
+                + "FROM `lector` AS lec JOIN prestamo "
+                + "ON lec.nroSocio=prestamo.idLector WHERE prestamo.estado=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Lector lector = new Lector();
+                lector.setSocio(rs.getInt("nroSocio"));
+                //lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
+                lector.setNombre(rs.getString("nombre"));
+                //lector.setEstado(rs.getBoolean("estado"));
+                lectores.add(lector);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
+        }
+        return lectores;
+    }
+
+    public List<Lector> ListarLectoresxPrestamoDesactivado() {
+        ArrayList<Lector> lectores = new ArrayList<>();
+        String sql = "SELECT nroSocio, lec.nombre, mail "
+                + "FROM `lector` AS lec JOIN prestamo "
+                + "ON lec.nroSocio=prestamo.idLector WHERE NOT prestamo.estado=1";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Lector lector = new Lector();
+                lector.setSocio(rs.getInt("nroSocio"));
+                //lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
+                lector.setNombre(rs.getString("nombre"));
+                //lector.setEstado(rs.getBoolean("estado"));
+                lectores.add(lector);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
+        }
+        return lectores;
     }
 
     public List<Lector> ListarLectoresxFechaVencida() {
@@ -178,27 +232,24 @@ public class PrestamoData {
         return lectores;
     }
 
-    public List<Libro> ListarLibrosxFecha(Date fecha, int idEjemplar) {
+    public List<Libro> ListarLibrosxFecha(Date fecha) {
         ArrayList<Libro> libros = new ArrayList<>();
-        String sql = "SELECT lib.titulo, lib.isbn, lib.editorial, lib.anio "
-                + "FROM `libro` AS lib "
-                + "JOIN ejemplar ON ejemplar.idLibro=lib.idLibro "
-                + "JOIN prestamo ON prestamo.idEjemplar = ejemplar.idEjemplar"
-                + "WHERE prestamo.fechaInicio=?";
+        String sql = "SELECT lib.titulo, lib.isbn, lib.editorial, lib.anio, lib.idAutor "
+                + "FROM `libro` AS lib JOIN ejemplar ON ejemplar.idLibro=lib.idLibro "
+                + "JOIN prestamo ON prestamo.idEjemplar = ejemplar.codigo "
+                + "WHERE prestamo.fechaInicio=? AND lib.estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setDate(1, fecha);
+           ps.setDate(1, new java.sql.Date(fecha.getTime()));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Libro libro = new Libro();
-                libro.setIdLibro(rs.getInt("idLibro"));
+                libro.setTitulo(rs.getString("titulo"));
                 libro.setIsbn(rs.getInt("isbn"));
                 libro.setEditorial(rs.getString("editorial"));
                 libro.setAnio(rs.getInt("anio"));
-                libro.setTitulo(rs.getString("titulo"));
-                libro.setEstado(rs.getBoolean("estado"));
                 libro.setAutor(ad.buscarAutor(rs.getInt("idAutor")));
-                libro.setTipo(rs.getString("tipo"));
+                
                 libros.add(libro);
 
             }

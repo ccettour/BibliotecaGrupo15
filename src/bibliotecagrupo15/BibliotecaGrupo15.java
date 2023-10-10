@@ -2,6 +2,7 @@ package bibliotecagrupo15;
 
 import bibliotecagrupo15.accesoADatos.*;
 import bibliotecagrupo15.entidades.*;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class BibliotecaGrupo15 {
@@ -110,9 +111,19 @@ public class BibliotecaGrupo15 {
 //        for (Ejemplar e : ed.listarEjemplares()) {
 //            System.out.println(e);
 //        }
-        Prestamo prestamo = new Prestamo(LocalDate.of(2023, 6, 21), LocalDate.of(2023, 10, 15), ed.buscarEjemplar(3), lecd.buscarLector(1), true);
+//        Prestamo prestamo = new Prestamo(LocalDate.of(2023, 6, 21), LocalDate.of(2023, 10, 15), ed.buscarEjemplar(3), lecd.buscarLector(1), true);
 //        pd.crearPrestamo(prestamo);
-prestamo.devolverLibro(ed.buscarEjemplar(3), lecd.buscarLector(1));
+//prestamo.devolverLibro(ed.buscarEjemplar(3), lecd.buscarLector(1));
+//pd.cancelarPrestamo(5);
+//System.out.println(pd.ListarPrestamos());
+//System.out.println(pd.ListarLectoresxPrestamoActivo());
+//System.out.println(pd.ListarLectoresxPrestamoDesactivado());
+//System.out.println(pd.ListarLectoresxFechaVencida());
+//for (Libro arg : pd.ListarLibrosxFecha(Date.valueOf(LocalDate.of(2023, 06, 21)))) {
+//            System.out.println(arg);
+//        }
+
+
     }
     
 }

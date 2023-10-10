@@ -53,7 +53,7 @@ public class AutorData {
                 autor.setIdentificacion(rs.getString("identificacion"));
                 autor.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 autor.setNacionalidad(rs.getString("nacionalidad"));
-                autor.setEstado(rs.getBoolean("estado"));
+               
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el autor");
             }
