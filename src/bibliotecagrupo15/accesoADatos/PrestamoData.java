@@ -75,31 +75,7 @@ public class PrestamoData {
 
     }
 
-//    eliminar
-    public void cancelarPrestamo(int id) {
-        String sql = "UPDATE `prestamo` SET `estado`= 0 WHERE idPrestamo=?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            int exito = ps.executeUpdate();
-
-            if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Prestamo cancelado con exito");
-            } else {
-                JOptionPane.showMessageDialog(null, "Prestamo inexistente");
-            }
-
-            //El estado del ejemplar pasa a 0
-            Prestamo pres= buscarPrestamo(id);
-            pres.devolverLibro(pres.getEjemplar(), pres.getLector());
-            
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
-        }
-
-    }
-
-    public Prestamo buscarPrestamo(int id){
+ public Prestamo buscarPrestamo(int id){
     String sql="SELECT * FROM `prestamo` WHERE idPrestamo=?";
     Prestamo pres=new Prestamo();
         try {
@@ -123,6 +99,30 @@ public class PrestamoData {
         }
      
     return pres;
+    }
+ 
+ //    eliminar
+    public void cancelarPrestamo(int id) {
+        String sql = "UPDATE `prestamo` SET `estado`= 0 WHERE idPrestamo=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Prestamo cancelado con exito");
+            } else {
+                JOptionPane.showMessageDialog(null, "Prestamo inexistente");
+            }
+
+            //El estado del ejemplar pasa a 0
+            Prestamo pres= buscarPrestamo(id);
+            pres.devolverLibro(pres.getEjemplar(), pres.getLector());
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
+        }
+
     }
     
 //    listar
