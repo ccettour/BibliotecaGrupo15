@@ -6,6 +6,8 @@ import bibliotecagrupo15.entidades.Prestamo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class PrestamoData {
@@ -88,6 +90,8 @@ public class PrestamoData {
             }
 
             //El estado del ejemplar pasa a 0
+            Prestamo pres= buscarPrestamo(id);
+            pres.devolverLibro(pres.getEjemplar(), pres.getLector());
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
@@ -95,6 +99,32 @@ public class PrestamoData {
 
     }
 
+    public Prestamo buscarPrestamo(int id){
+    String sql="SELECT * FROM `prestamo` WHERE idPrestamo=?";
+    Prestamo pres=new Prestamo();
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()) {
+                pres.setIdPrestamo(id);
+                pres.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                pres.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+                pres.setEjemplar(ed.buscarEjemplar(rs.getInt("idEjemplar")));
+                pres.setLector(ld.buscarLector(rs.getInt("idLector")));
+                pres.setEstado(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Prestamo no encontrado");
+            }
+            
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
+        }
+     
+    return pres;
+    }
+    
 //    listar
     public List<Prestamo> ListarPrestamos() {
         ArrayList<Prestamo> prestamos = new ArrayList<>();
