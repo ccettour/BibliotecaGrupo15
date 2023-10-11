@@ -26,6 +26,11 @@
                 <Property name="text" type="java.lang.String" value="Agregar Libro"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="agregarEjemplares">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agregar Ejemplares"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="prestamos">

@@ -34,6 +34,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         usuario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         agregarLibro = new javax.swing.JMenuItem();
+        agregarEjemplares = new javax.swing.JMenuItem();
         prestamos = new javax.swing.JMenu();
         pedirPrestamo = new javax.swing.JMenuItem();
         devolver = new javax.swing.JMenuItem();
@@ -73,6 +74,9 @@ public class MenuBiblioteca extends javax.swing.JFrame {
 
         agregarLibro.setText("Agregar Libro");
         jMenu2.add(agregarLibro);
+
+        agregarEjemplares.setText("Agregar Ejemplares");
+        jMenu2.add(agregarEjemplares);
 
         jMenuBar1.add(jMenu2);
 
@@ -151,6 +155,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem agregarEjemplares;
     private javax.swing.JMenuItem agregarLibro;
     private javax.swing.JMenuItem devolver;
     private javax.swing.JDesktopPane jDesktopPane1;
