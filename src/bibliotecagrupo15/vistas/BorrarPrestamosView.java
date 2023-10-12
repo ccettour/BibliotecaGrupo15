@@ -8,12 +8,12 @@ package bibliotecagrupo15.vistas;
  *
  * @author User
  */
-public class Prestamos extends javax.swing.JInternalFrame {
+public class BorrarPrestamosView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Prestamos
      */
-    public Prestamos() {
+    public BorrarPrestamosView() {
         initComponents();
     }
 
