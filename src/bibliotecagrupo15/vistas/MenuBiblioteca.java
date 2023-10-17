@@ -42,6 +42,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         listadoDeSocios = new javax.swing.JMenuItem();
         listaDeLibros = new javax.swing.JMenuItem();
         listadoDePrestamos = new javax.swing.JMenuItem();
+        adminAutores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,6 +102,9 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         listadoDePrestamos.setText("Listado de Prestamos");
         jMenu3.add(listadoDePrestamos);
 
+        adminAutores.setText("Administración de autores");
+        jMenu3.add(adminAutores);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -155,6 +159,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem adminAutores;
     private javax.swing.JMenuItem agregarEjemplares;
     private javax.swing.JMenuItem agregarLibro;
     private javax.swing.JMenuItem devolver;

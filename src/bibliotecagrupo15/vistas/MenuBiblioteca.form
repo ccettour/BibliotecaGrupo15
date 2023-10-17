@@ -70,6 +70,11 @@
                 <Property name="text" type="java.lang.String" value="Listado de Prestamos"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="adminAutores">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Administraci&#xf3;n de autores"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
