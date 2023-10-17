@@ -68,15 +68,18 @@
             <Property name="text" type="java.lang.String" value="Administracion"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="listadoDeSocios">
+            <MenuItem class="javax.swing.JMenuItem" name="adminSocios">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Listado de Socios"/>
+                <Property name="text" type="java.lang.String" value="Administracion de Socios"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="listaDeLibros">
+            <MenuItem class="javax.swing.JMenuItem" name="adminLibros">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lista de Libros"/>
+                <Property name="text" type="java.lang.String" value="Administracion de Libros"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminLibrosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="listadoDePrestamos">
               <Properties>

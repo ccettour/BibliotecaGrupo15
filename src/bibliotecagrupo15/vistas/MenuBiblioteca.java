@@ -39,8 +39,8 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         pedirPrestamo = new javax.swing.JMenuItem();
         devolver = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        listadoDeSocios = new javax.swing.JMenuItem();
-        listaDeLibros = new javax.swing.JMenuItem();
+        adminSocios = new javax.swing.JMenuItem();
+        adminLibros = new javax.swing.JMenuItem();
         listadoDePrestamos = new javax.swing.JMenuItem();
         adminAutores = new javax.swing.JMenuItem();
 
@@ -103,11 +103,16 @@ public class MenuBiblioteca extends javax.swing.JFrame {
 
         jMenu3.setText("Administracion");
 
-        listadoDeSocios.setText("Listado de Socios");
-        jMenu3.add(listadoDeSocios);
+        adminSocios.setText("Administracion de Socios");
+        jMenu3.add(adminSocios);
 
-        listaDeLibros.setText("Lista de Libros");
-        jMenu3.add(listaDeLibros);
+        adminLibros.setText("Administracion de Libros");
+        adminLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminLibrosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(adminLibros);
 
         listadoDePrestamos.setText("Listado de Prestamos");
         jMenu3.add(listadoDePrestamos);
@@ -153,6 +158,10 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_adminAutoresActionPerformed
 
+    private void adminLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLibrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminLibrosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -190,6 +199,8 @@ public class MenuBiblioteca extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem adminAutores;
+    private javax.swing.JMenuItem adminLibros;
+    private javax.swing.JMenuItem adminSocios;
     private javax.swing.JMenuItem agregarEjemplares;
     private javax.swing.JMenuItem agregarLibro;
     private javax.swing.JMenuItem devolver;
@@ -200,9 +211,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem listaDeLibros;
     private javax.swing.JMenuItem listadoDePrestamos;
-    private javax.swing.JMenuItem listadoDeSocios;
     private javax.swing.JMenuItem pedirPrestamo;
     private javax.swing.JMenu prestamos;
     private javax.swing.JMenuItem socio;
