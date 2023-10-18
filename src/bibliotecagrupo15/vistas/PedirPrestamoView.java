@@ -55,9 +55,10 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
         s = new javax.swing.JRadioButton();
         crearPrestamo = new javax.swing.JButton();
         limparDatos = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setClosable(true);
-        setOpaque(true);
+        setToolTipText("");
         setVisible(true);
 
         jPanel1.setMinimumSize(new java.awt.Dimension(0, 1));
@@ -65,15 +66,19 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido Usuario!");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Por favor seleccione o rellene las casillas para pedir un Prestamo");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Libro Disponible a prestar :");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Codigo de Socio : ");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
@@ -83,11 +88,13 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
 
         cb.setBackground(new java.awt.Color(55, 53, 53));
         cb.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(cb, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 370, -1));
+        jPanel1.add(cb, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 320, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tiempo de Prestamo: ");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
+        d.setForeground(new java.awt.Color(255, 255, 255));
         d.setText("3 dias");
         d.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +103,7 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
         });
         jPanel1.add(d, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
 
+        m.setForeground(new java.awt.Color(255, 255, 255));
         m.setText("1 mes");
         m.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +112,7 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
         });
         jPanel1.add(m, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
 
+        s.setForeground(new java.awt.Color(255, 255, 255));
         s.setText("1 semana");
         s.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +141,9 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
         });
         jPanel1.add(limparDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/fondo-prestamos.jpg"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 340));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +152,7 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
         );
 
         pack();
@@ -203,6 +215,7 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton limparDatos;
     private javax.swing.JRadioButton m;
