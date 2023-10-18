@@ -12,7 +12,7 @@ public class Prestamo {
     private Lector lector;
     private boolean estado;
 
-    private EjemplarData ed=new EjemplarData();
+    EjemplarData ed = new EjemplarData();
     
     public Prestamo() {
     }

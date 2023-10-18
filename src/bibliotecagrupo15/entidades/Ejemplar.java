@@ -50,7 +50,7 @@ public class Ejemplar {
 
     @Override
     public String toString() {
-        return "Ejemplar{" + " codigo=" + codigo + ", libro=" + libro + ", estado=" + estado + '}';
+        return libro + " ";
     }
  
 }
