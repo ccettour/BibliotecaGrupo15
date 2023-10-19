@@ -45,6 +45,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         adminAutores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         fondoMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,6 +98,11 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         prestamos.add(pedirPrestamo);
 
         devolver.setText("Devolver");
+        devolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                devolverActionPerformed(evt);
+            }
+        });
         prestamos.add(devolver);
 
         jMenuBar1.add(prestamos);
@@ -161,6 +167,17 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     private void adminLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLibrosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adminLibrosActionPerformed
+
+    private void devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+       escritorio.repaint();
+       fondo();
+        BorrarPrestamosView bpv = new BorrarPrestamosView();
+       bpv.setVisible(true);
+       escritorio.add(bpv);
+       escritorio.moveToFront(bpv);
+    }//GEN-LAST:event_devolverActionPerformed
 
     /**
      * @param args the command line arguments

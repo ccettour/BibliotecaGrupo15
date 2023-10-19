@@ -11,6 +11,7 @@ import bibliotecagrupo15.entidades.*;
 import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -23,6 +24,7 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
     LocalDate date = LocalDate.now();
     LocalDate date2= LocalDate.now();
     boolean tiempo=false;
+    
     /**
      * Creates new form PedirPrestamo
      */
