@@ -4,6 +4,7 @@
  */
 package bibliotecagrupo15.vistas;
 
+import bibliotecagrupo15.Tipo;
 import bibliotecagrupo15.accesoADatos.*;
 import bibliotecagrupo15.entidades.*;
 import java.util.List;
@@ -156,7 +157,7 @@ public class LibrosView extends javax.swing.JInternalFrame {
             String titulo = jtfTitulo.getText();
             Autor autor = (Autor) jcbAutores.getSelectedItem();
             int anio = Integer.parseInt(jtfAnio.getText());
-            String tipo = jcbTipo.getSelectedItem().toString().toLowerCase();
+            Tipo tipo = (Tipo)jcbTipo.getSelectedItem();
             String editorial = jtfEditorial.getText();
             Libro libro = new Libro(isbn, titulo, autor, anio, tipo, editorial, true);
             ld.guardarLibro(libro);
@@ -168,7 +169,12 @@ public class LibrosView extends javax.swing.JInternalFrame {
                     Ejemplar ejemplar = new Ejemplar(libro, 0);
                     ed.crearEjemplar(ejemplar);
                 }
+                JOptionPane.showMessageDialog(null, "Ejemplares creados");
             }
+            
+            // Limpiar formulario
+            
+            
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(this, "ISBN o año incorrecto. Debe introducir un valor numérico");
 

@@ -1,5 +1,6 @@
 package bibliotecagrupo15.accesoADatos;
 
+import bibliotecagrupo15.Tipo;
 import bibliotecagrupo15.entidades.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class LibroData {
             ps.setString(2, libro.getTitulo());
             ps.setInt(3, libro.getAutor().getIdAutor());
             ps.setInt(4, libro.getAnio());
-            ps.setString(5, libro.getTipo());
+            ps.setString(5, libro.getTipo().toString());
             ps.setString(6, libro.getEditorial());
             ps.setBoolean(7, libro.isEstado());
             ps.executeUpdate();
@@ -53,7 +54,7 @@ public class LibroData {
             ps.setInt(3, libro.getAutor().getIdAutor());
             
             ps.setInt(4, libro.getAnio());
-            ps.setString(5, libro.getTipo());
+            ps.setString(5, libro.getTipo().toString());
             ps.setString(6, libro.getEditorial());
             ps.setInt(8, libro.getIdLibro());
             int exito = ps.executeUpdate();
@@ -83,7 +84,34 @@ public class LibroData {
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(autorD.buscarAutor(rs.getInt("idAutor")));
                 libro.setAnio(rs.getInt("anio"));
-                libro.setTipo(rs.getString("tipo"));
+                libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Libro no encontrado");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Libro");
+        }
+        return libro;
+    }
+    
+    public Libro buscarLibroXIsbn(int isbn) {
+        String sql = "SELECT * FROM libro WHERE isbn= ?";
+        Libro libro = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, isbn);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                libro = new Libro();
+                libro.setIdLibro(rs.getInt("idLibro"));
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(autorD.buscarAutor(rs.getInt("idAutor")));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
                 libro.setEditorial(rs.getString("editorial"));
                 libro.setEstado(true);
             } else {
@@ -144,7 +172,7 @@ public class LibroData {
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(autorD.buscarAutor(rs.getInt("idAutor")));
                 libro.setAnio(rs.getInt("anio"));
-                libro.setTipo(rs.getString("tipo"));
+                libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
                 libro.setEditorial(rs.getString("editorial"));
                 libro.setEstado(true);
 
@@ -175,7 +203,7 @@ public class LibroData {
                 libro.setTitulo(rs.getString("titulo"));
                 libro.setAutor(autor);
                 libro.setAnio(rs.getInt("anio"));
-                libro.setTipo(rs.getString("tipo"));
+                libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
                 libro.setEditorial(rs.getString("editorial"));
                 libro.setEstado(true);
 

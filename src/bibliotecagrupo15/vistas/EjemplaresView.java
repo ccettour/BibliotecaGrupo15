@@ -132,6 +132,7 @@ public class EjemplaresView extends javax.swing.JInternalFrame {
                     Ejemplar ejemplar = new Ejemplar(libro, 0);
                     ed.crearEjemplar(ejemplar);
                 }
+                JOptionPane.showMessageDialog(null, "Ejemplares creados");
             }
     }//GEN-LAST:event_jbAgregarActionPerformed
 

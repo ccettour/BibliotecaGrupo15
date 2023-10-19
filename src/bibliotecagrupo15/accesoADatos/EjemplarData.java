@@ -26,7 +26,6 @@ public class EjemplarData {
             ResultSet exito = ps.getGeneratedKeys();
             if(exito.next()){
                 ejemplar.setCodigo(exito.getInt(1));
-                JOptionPane.showMessageDialog(null, "Ejemplar creado");
             }
             ps.close();
             
