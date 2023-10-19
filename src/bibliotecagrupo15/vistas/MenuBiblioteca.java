@@ -26,7 +26,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -51,16 +51,16 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/Fondo-Inicio.jpg"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 380));
 
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -74,9 +74,19 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jMenu2.setText("Libros");
 
         agregarLibro.setText("Agregar Libro");
+        agregarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarLibroActionPerformed(evt);
+            }
+        });
         jMenu2.add(agregarLibro);
 
         agregarEjemplares.setText("Agregar Ejemplares");
+        agregarEjemplares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarEjemplaresActionPerformed(evt);
+            }
+        });
         jMenu2.add(agregarEjemplares);
 
         jMenuBar1.add(jMenu2);
@@ -96,7 +106,12 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         listadoDeSocios.setText("Listado de Socios");
         jMenu3.add(listadoDeSocios);
 
-        listaDeLibros.setText("Lista de Libros");
+        listaDeLibros.setText("Administración de libros");
+        listaDeLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDeLibrosActionPerformed(evt);
+            }
+        });
         jMenu3.add(listaDeLibros);
 
         listadoDePrestamos.setText("Listado de Prestamos");
@@ -113,15 +128,49 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void agregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarLibroActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        LibrosView mv = new LibrosView();
+        mv.setVisible(true);
+        escritorio.add(mv);
+        escritorio.moveToFront(mv);
+    }//GEN-LAST:event_agregarLibroActionPerformed
+
+    private void agregarEjemplaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarEjemplaresActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        EjemplaresView ev = new EjemplaresView();
+        ev.setVisible(true);
+        escritorio.add(ev);
+        escritorio.moveToFront(ev);
+    }//GEN-LAST:event_agregarEjemplaresActionPerformed
+
+    private void listaDeLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeLibrosActionPerformed
+        // TODO add your handling code here:
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        AdminLibrosView alv = new AdminLibrosView();
+        alv.setVisible(true);
+        escritorio.add(alv);
+        escritorio.moveToFront(alv);
+    }//GEN-LAST:event_listaDeLibrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +212,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     private javax.swing.JMenuItem agregarEjemplares;
     private javax.swing.JMenuItem agregarLibro;
     private javax.swing.JMenuItem devolver;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -177,4 +226,22 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     private javax.swing.JMenu prestamos;
     private javax.swing.JMenuItem usuario;
     // End of variables declaration//GEN-END:variables
+
+    private void fondoMenu() {
+        jPanel2 = new javax.swing.JPanel();
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 380));
+        escritorio.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }
 }
