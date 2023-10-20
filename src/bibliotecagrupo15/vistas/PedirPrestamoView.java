@@ -90,7 +90,7 @@ public class PedirPrestamoView extends javax.swing.JInternalFrame {
 
         cb.setBackground(new java.awt.Color(55, 53, 53));
         cb.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(cb, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 320, -1));
+        jPanel1.add(cb, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 370, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tiempo de Prestamo: ");

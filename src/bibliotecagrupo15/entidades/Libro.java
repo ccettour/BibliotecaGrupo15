@@ -103,7 +103,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "" + titulo + ", " + autor + ", " + anio;
+        return titulo + ", " + autor + ", "+ anio + " ," +tipo;
     }
     
     
