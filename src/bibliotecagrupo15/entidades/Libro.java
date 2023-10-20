@@ -1,5 +1,7 @@
 package bibliotecagrupo15.entidades;
 
+import bibliotecagrupo15.Tipo;
+
 public class Libro {
 
     private int idLibro;
@@ -7,15 +9,14 @@ public class Libro {
     private String titulo;
     private Autor autor;
     private int anio;
-    private String tipo;
+    private Tipo tipo;
     private String editorial;
-    
     private boolean estado;
 
     public Libro() {
     }
 
-    public Libro(int isbn, String titulo, Autor autor, int anio, String tipo, String editorial, boolean estado) {
+    public Libro(int isbn, String titulo, Autor autor, int anio, Tipo tipo, String editorial, boolean estado) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.autor = autor;
@@ -25,7 +26,7 @@ public class Libro {
         this.estado = estado;
     }
 
-    public Libro(int idLibro, int isbn, String titulo, Autor autor, int anio, String tipo, String editorial, boolean estado) {
+    public Libro(int idLibro, int isbn, String titulo, Autor autor, int anio, Tipo tipo, String editorial, boolean estado) {
         this.idLibro = idLibro;
         this.isbn = isbn;
         this.titulo = titulo;
@@ -76,11 +77,11 @@ public class Libro {
         this.anio = anio;
     }
 
-    public String getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
 
@@ -91,7 +92,7 @@ public class Libro {
     public void setEditorial(String editorial) {
         this.editorial = editorial;
     }
-  
+
     public boolean isEstado() {
         return estado;
     }

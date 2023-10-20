@@ -178,20 +178,21 @@ public class PrestamoData {
         return lectores;
     }
 
-    public List<Prestamo> ListarPrestamoxLectores() {
+    public List<Prestamo> ListarPrestamoxLectores(int id) {
         ArrayList<Prestamo> prestamos = new ArrayList<>();
         String sql = "SELECT * FROM `prestamo` as p "
-                + "JOIN lector ON p.idLector=lector.nroSocio WHERE p.estado=1";
+                + "JOIN lector ON p.idLector=lector.nroSocio WHERE p.idLector=? AND p.estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
+            ps.setInt(1, id);
             while (rs.next()) {
                 Prestamo pres = new Prestamo();
                 pres.setIdPrestamo(rs.getInt("idPrestamo"));
                 pres.setFechaFin(rs.getDate("fechaFin").toLocalDate());
                 pres.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
                 pres.setEstado(rs.getBoolean("estado"));
-                pres.setLector(ld.buscarLector(rs.getInt("idLector")));
+                pres.setLector(ld.buscarLector(id));
                 pres.setEjemplar(ed.buscarEjemplar(rs.getInt("idEjemplar")));
                 prestamos.add(pres);
             }

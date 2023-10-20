@@ -4,6 +4,11 @@
  */
 package bibliotecagrupo15.vistas;
 
+import bibliotecagrupo15.accesoADatos.PrestamoData;
+import bibliotecagrupo15.entidades.Lector;
+import bibliotecagrupo15.entidades.Prestamo;
+import java.awt.Color;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -11,7 +16,8 @@ import javax.swing.table.DefaultTableModel;
  * @author User
  */
 public class ListaPrestamos extends javax.swing.JInternalFrame {
-private DefaultTableModel tabla = new DefaultTableModel() {
+
+    private DefaultTableModel tabla = new DefaultTableModel() {
         @Override
         public boolean isCellEditable(int fila, int columna) {
             return false;
@@ -20,8 +26,18 @@ private DefaultTableModel tabla = new DefaultTableModel() {
     /**
      * Creates new form ListaPrestamos
      */
+    PrestamoData pd = new PrestamoData();
+
     public ListaPrestamos() {
         initComponents();
+        Socios.setVisible(false);
+        grupo();
+        Color color = new Color(87, 87, 86);
+//Color color2=new Color(255,255,255);
+        tablaP.setBackground(color);
+//jTabla_registro.getTableHeader().setBackground(new Color(32, 136, 203));
+        tablaP.getTableHeader().setBackground(color);
+//tablaP.getTableHeader().setForeground(color2);
     }
 
     /**
@@ -33,6 +49,7 @@ private DefaultTableModel tabla = new DefaultTableModel() {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupob = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -41,10 +58,12 @@ private DefaultTableModel tabla = new DefaultTableModel() {
         LibrosPrestadosxFecha = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaP = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        Socios = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(500, 370));
+        setPreferredSize(new java.awt.Dimension(535, 370));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -55,13 +74,13 @@ private DefaultTableModel tabla = new DefaultTableModel() {
         jLabel2.setText("Seleccione la vista que desea revisar: ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        ListaPrestamos.setText("Lista de Prestamos");
+        ListaPrestamos.setText("Lista de Prestamos ");
         ListaPrestamos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ListaPrestamosActionPerformed(evt);
             }
         });
-        jPanel1.add(ListaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
+        jPanel1.add(ListaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         SociosActivos.setText("Socios con Prestamos activos");
         SociosActivos.addActionListener(new java.awt.event.ActionListener() {
@@ -69,11 +88,12 @@ private DefaultTableModel tabla = new DefaultTableModel() {
                 SociosActivosActionPerformed(evt);
             }
         });
-        jPanel1.add(SociosActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
+        jPanel1.add(SociosActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
         LibrosPrestadosxFecha.setText("Libros Prestados");
-        jPanel1.add(LibrosPrestadosxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
+        jPanel1.add(LibrosPrestadosxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
 
+        tablaP.setForeground(new java.awt.Color(255, 255, 255));
         tablaP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -82,21 +102,29 @@ private DefaultTableModel tabla = new DefaultTableModel() {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "", "", "", ""
             }
         ));
+        tablaP.setSelectionBackground(new java.awt.Color(136, 92, 8));
+        tablaP.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tablaP);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 470, 180));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 470, 180));
 
-        jButton1.setText("limpiar seleccion");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, -1, -1));
+        jRadioButton1.setText("Prestamos vencidos");
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
+
+        jPanel1.add(Socios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 250, -1));
+
+        jLabel3.setForeground(new java.awt.Color(58, 58, 58));
+        jLabel3.setText("Esta ventana es para dar un vistazo a la organizacion, si desea editar datos revise las otras opciones");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,39 +136,67 @@ private DefaultTableModel tabla = new DefaultTableModel() {
 
     private void ListaPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaPrestamosActionPerformed
         // TODO add your handling code here:
-        
-        
+        cargarCabecera1();
+        cargarTabla1();
+        ListaPrestamos.setEnabled(false);
+        SociosActivos.setEnabled(true);
     }//GEN-LAST:event_ListaPrestamosActionPerformed
 
     private void SociosActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SociosActivosActionPerformed
         // TODO add your handling code here:
+        ListaPrestamos.setEnabled(true);
+        
     }//GEN-LAST:event_SociosActivosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton LibrosPrestadosxFecha;
     private javax.swing.JRadioButton ListaPrestamos;
+    private javax.swing.JComboBox<Lector> Socios;
     private javax.swing.JRadioButton SociosActivos;
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup grupob;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaP;
     // End of variables declaration//GEN-END:variables
 
-private void limpiar(){
-int p=tablaP.getRowCount()-1;
-    for (; p >= 0; p--) {
+    private void grupo() {
+        grupob.add(ListaPrestamos);
+        grupob.add(SociosActivos);
+        grupob.add(LibrosPrestadosxFecha);
+    }
+
+    private void limpiar() {
+        int p = tablaP.getRowCount() - 1;
+        for (; p >= 0; p--) {
             tabla.removeRow(p);
         }
+
+    }
+
+    private void cargarCabecera1() {
+        tabla.addColumn("ID");
+        tabla.addColumn("NRO SOCIO");
+        tabla.addColumn("NOMBRE");
+        tabla.addColumn("FECHA DE INICIO");
+        tabla.addColumn("VENCIMIENTO");
+        tablaP.setModel(tabla);
+
+    }
+
+    private void cargarTabla1() {
+        limpiar();
+        List<Prestamo> prestamos = pd.ListarPrestamos();
+        for (Prestamo p : prestamos) {
+            tabla.addRow(new Object[]{p.getIdPrestamo(), p.getLector().getSocio(), p.getLector().getNombre(), p.getFechaInicio(), p.getFechaFin()});
+        }
+
+    }
+
     
-}
-
-private void cargarCabecera1(){
-
     
-
-}
-
 }
