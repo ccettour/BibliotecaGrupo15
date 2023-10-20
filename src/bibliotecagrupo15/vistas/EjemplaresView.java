@@ -42,8 +42,8 @@ public class EjemplaresView extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jcbLibros = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        jcbCantEjemplares = new javax.swing.JComboBox<>();
         jbAgregar = new javax.swing.JButton();
+        jtfCantEjemplares = new javax.swing.JTextField();
         fondoLibros = new javax.swing.JLabel();
 
         setClosable(true);
@@ -78,14 +78,6 @@ public class EjemplaresView extends javax.swing.JInternalFrame {
         jLabel8.setText("Cantidad de ejemplares:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        jcbCantEjemplares.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        jcbCantEjemplares.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbCantEjemplaresActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jcbCantEjemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 50, -1));
-
         jbAgregar.setText("Agregar");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +85,9 @@ public class EjemplaresView extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
+
+        jtfCantEjemplares.setText("0");
+        jPanel1.add(jtfCantEjemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 50, -1));
 
         fondoLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/fondo-ejemplares.png"))); // NOI18N
         jPanel1.add(fondoLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -122,10 +117,10 @@ public class EjemplaresView extends javax.swing.JInternalFrame {
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
-        
+        try{
             Libro libro = (Libro) jcbLibros.getSelectedItem();
             
-            int cantEjemp = jcbCantEjemplares.getSelectedIndex();
+            int cantEjemp = Integer.parseInt(jtfCantEjemplares.getText());
             
             if (cantEjemp >= 1) {
                 for (int i = 1; i <= cantEjemp; i++) {
@@ -133,12 +128,14 @@ public class EjemplaresView extends javax.swing.JInternalFrame {
                     ed.crearEjemplar(ejemplar);
                 }
                 JOptionPane.showMessageDialog(null, "Ejemplares creados");
+                jtfCantEjemplares.setText("");
             }
+        }catch(java.lang.NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "La cantidad ingresada es incorrecta");
+        }
+            
+            
     }//GEN-LAST:event_jbAgregarActionPerformed
-
-    private void jcbCantEjemplaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCantEjemplaresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbCantEjemplaresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -148,8 +145,8 @@ public class EjemplaresView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbAgregar;
-    private javax.swing.JComboBox<String> jcbCantEjemplares;
     private javax.swing.JComboBox<Libro> jcbLibros;
+    private javax.swing.JTextField jtfCantEjemplares;
     // End of variables declaration//GEN-END:variables
 
     private void cargarCombo() {

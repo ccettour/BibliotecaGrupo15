@@ -124,11 +124,11 @@ public class BibliotecaGrupo15 {
         //pd.crearPrestamo(prestamo);
         //pd.crearPrestamo(prestamo1);
         
-        
+        /*
         for (Lector l : pd.ListarLectoresxFechaVencida()) {
             System.out.println(l);
         }
-        
+        */
         
     }
     

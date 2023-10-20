@@ -199,11 +199,11 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
     private void jtLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtLibrosMouseClicked
         // TODO add your handling code here:
         int libroElegido = jtLibros.getSelectedRow();
-        int idLibro = ld.buscarLibroXIsbn((Integer)jtLibros.getValueAt(libroElegido, 0)).getIdLibro();
+        int idLibro = ld.buscarLibroXIsbn((Integer) jtLibros.getValueAt(libroElegido, 0)).getIdLibro();
         Autor autor = ad.buscarAutorXNombre(jtLibros.getValueAt(libroElegido, 2).toString());
         Tipo tipo = Tipo.valueOf(jtLibros.getValueAt(libroElegido, 4).toString());
-        
-        jtfId.setText(idLibro+"");
+
+        jtfId.setText(idLibro + "");
         jtfIsbn.setText(jtLibros.getValueAt(libroElegido, 0).toString());
         jtfTitulo.setText(jtLibros.getValueAt(libroElegido, 1).toString());
         jcbAutores.setSelectedItem(autor);
@@ -214,20 +214,24 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         // TODO add your handling code here:
-        
+
         try {
-            int id=Integer.parseInt(jtfId.getText());
-            int isbn=Integer.parseInt(jtfIsbn.getText());
-            String titulo = jtfTitulo.getText();
-            Autor autor = (Autor)jcbAutores.getSelectedItem();
-            int anio = Integer.parseInt(jtfAnio.getText());
-            Tipo tipo = (Tipo)jcbTipo.getSelectedItem();
-            String editorial = jtfEditorial.getText();
-            
-            Libro libro = new Libro(id, isbn, titulo, autor, anio, tipo, editorial, true);
-            ld.modificarLibro(libro);
-            
-            limpiarFormulario();
+            if (jtfId.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Seleccione en la tabla el libro a editar");
+            } else {
+                int id = Integer.parseInt(jtfId.getText());
+                int isbn = Integer.parseInt(jtfIsbn.getText());
+                String titulo = jtfTitulo.getText();
+                Autor autor = (Autor) jcbAutores.getSelectedItem();
+                int anio = Integer.parseInt(jtfAnio.getText());
+                Tipo tipo = (Tipo) jcbTipo.getSelectedItem();
+                String editorial = jtfEditorial.getText();
+
+                Libro libro = new Libro(id, isbn, titulo, autor, anio, tipo, editorial, true);
+                ld.modificarLibro(libro);
+
+                limpiarFormulario();
+            }
         } catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Dato faltante o erróneo. \nIntente de nuevo");
         }
@@ -235,13 +239,17 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
+        if (jtfId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione en la tabla el libro a eliminar");
+        } else {
 
-        int isbn = Integer.parseInt(jtfIsbn.getText());
-        int id = ld.buscarLibroXIsbn(isbn).getIdLibro();
+            int isbn = Integer.parseInt(jtfIsbn.getText());
+            int id = ld.buscarLibroXIsbn(isbn).getIdLibro();
 
-        ld.deshabilitarLibro(id);
-        cargarTabla();
-        limpiarFormulario();
+            ld.deshabilitarLibro(id);
+            cargarTabla();
+            limpiarFormulario();
+        }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
 

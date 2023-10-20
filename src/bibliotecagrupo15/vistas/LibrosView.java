@@ -16,15 +16,14 @@ import javax.swing.JOptionPane;
  * @author Chris
  */
 public class LibrosView extends javax.swing.JInternalFrame {
-    
+
     LibroData ld = new LibroData();
     AutorData ad = new AutorData();
     EjemplarData ed = new EjemplarData();
-    
+
     /**
      * Creates new form LibrosView
      */
-    
     public LibrosView() {
         initComponents();
         cargarCombo();
@@ -53,9 +52,9 @@ public class LibrosView extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jtfEditorial = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jcbCantEjemplares = new javax.swing.JComboBox<>();
         jbAgregar = new javax.swing.JButton();
         jcbTipo = new javax.swing.JComboBox<>();
+        jtfCantEjemplares = new javax.swing.JTextField();
         fondoLibros = new javax.swing.JLabel();
 
         setClosable(true);
@@ -114,9 +113,6 @@ public class LibrosView extends javax.swing.JInternalFrame {
         jLabel9.setText("Editorial:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
-        jcbCantEjemplares.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-        jPanel1.add(jcbCantEjemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 50, -1));
-
         jbAgregar.setText("Agregar");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +123,9 @@ public class LibrosView extends javax.swing.JInternalFrame {
 
         jcbTipo.setModel(new DefaultComboBoxModel(bibliotecagrupo15.Tipo.values()));
         jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 160, -1));
+
+        jtfCantEjemplares.setText("0");
+        jPanel1.add(jtfCantEjemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 50, -1));
 
         fondoLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/fondo-libros.png"))); // NOI18N
         jPanel1.add(fondoLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -151,32 +150,37 @@ public class LibrosView extends javax.swing.JInternalFrame {
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
-        
+
         try {
             int isbn = Integer.parseInt(jtfIsbn.getText());
             String titulo = jtfTitulo.getText();
             Autor autor = (Autor) jcbAutores.getSelectedItem();
             int anio = Integer.parseInt(jtfAnio.getText());
-            Tipo tipo = (Tipo)jcbTipo.getSelectedItem();
+            Tipo tipo = (Tipo) jcbTipo.getSelectedItem();
             String editorial = jtfEditorial.getText();
-            Libro libro = new Libro(isbn, titulo, autor, anio, tipo, editorial, true);
-            ld.guardarLibro(libro);
-            
-            int cantEjemp = jcbCantEjemplares.getSelectedIndex();
-            
-            if (cantEjemp >= 1) {
-                for (int i = 1; i <= cantEjemp; i++) {
-                    Ejemplar ejemplar = new Ejemplar(libro, 0);
-                    ed.crearEjemplar(ejemplar);
+            int cantEjemp = Integer.parseInt(jtfCantEjemplares.getText());
+
+            if (anio>=2024 || anio<0) {
+                JOptionPane.showMessageDialog(null, "El año ingresado es incorrecto");
+            } else if (titulo.isEmpty() || editorial.isEmpty() || isbn<0 || isbn>Integer.MAX_VALUE){
+                JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+            } else {
+                Libro libro = new Libro(isbn, titulo, autor, anio, tipo, editorial, true);
+                ld.guardarLibro(libro);
+
+                if (cantEjemp >= 1) {
+                    for (int i = 1; i <= cantEjemp; i++) {
+                        Ejemplar ejemplar = new Ejemplar(libro, 0);
+                        ed.crearEjemplar(ejemplar);
+                    }
+                    JOptionPane.showMessageDialog(null, "Ejemplares creados");
                 }
-                JOptionPane.showMessageDialog(null, "Ejemplares creados");
+
+                limpiarFormulario();
             }
-            
-            // Limpiar formulario
-            
-            
+
         } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "ISBN o año incorrecto. Debe introducir un valor numérico");
+            JOptionPane.showMessageDialog(this, "ISBN, año o cantidad de ejemplares incorrecto. Debe introducir un valor numérico");
 
         }
     }//GEN-LAST:event_jbAgregarActionPerformed
@@ -195,9 +199,9 @@ public class LibrosView extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jbAgregar;
     private javax.swing.JComboBox<Autor> jcbAutores;
-    private javax.swing.JComboBox<String> jcbCantEjemplares;
     private javax.swing.JComboBox<String> jcbTipo;
     private javax.swing.JTextField jtfAnio;
+    private javax.swing.JTextField jtfCantEjemplares;
     private javax.swing.JTextField jtfEditorial;
     private javax.swing.JTextField jtfIsbn;
     private javax.swing.JTextField jtfTitulo;
@@ -208,6 +212,16 @@ public class LibrosView extends javax.swing.JInternalFrame {
         for (Autor autor : autores) {
             jcbAutores.addItem(autor);
         }
+    }
+
+    private void limpiarFormulario() {
+        jtfIsbn.setText("");
+        jtfTitulo.setText("");
+        jcbAutores.setSelectedIndex(0);
+        jtfAnio.setText("");
+        jcbTipo.setSelectedIndex(0);
+        jtfEditorial.setText("");
+        jtfCantEjemplares.setText(0+"");
     }
 
 }

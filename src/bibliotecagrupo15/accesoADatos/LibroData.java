@@ -44,9 +44,10 @@ public class LibroData {
     }
 
     public void modificarLibro(Libro libro) {
-        String sql = "UPDATE libro SET isbn=?,titulo=?,idAutor=?,anio=?,tipo=?,editorial=?,cantidadEjemplares=? WHERE idLibro=?";
+        String sql = "UPDATE libro SET isbn=?,titulo=?,idAutor=?, anio=?,tipo=?,editorial=? "
+                + "WHERE idLibro=?";
         PreparedStatement ps = null;
-
+        
         try {
             ps = con.prepareStatement(sql);
             ps.setInt(1, libro.getIsbn());
@@ -56,7 +57,8 @@ public class LibroData {
             ps.setInt(4, libro.getAnio());
             ps.setString(5, libro.getTipo().toString());
             ps.setString(6, libro.getEditorial());
-            ps.setInt(8, libro.getIdLibro());
+            ps.setInt(7, libro.getIdLibro());
+            
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
