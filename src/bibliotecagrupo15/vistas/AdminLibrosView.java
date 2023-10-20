@@ -265,12 +265,20 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
                 Tipo tipo = (Tipo) jcbTipo.getSelectedItem();
                 String editorial = jtfEditorial.getText();
 
-                Libro libro = new Libro(id, isbn, titulo, autor, anio, tipo, editorial, true);
-                ld.modificarLibro(libro);
+                if (anio >= 2024 || anio < 0) {
+                    JOptionPane.showMessageDialog(null, "El año ingresado es incorrecto");
+                } else if (titulo.isEmpty() || editorial.isEmpty() || isbn < 0 || isbn > Integer.MAX_VALUE) {
+                    JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+                } else {
 
-                limpiarFormulario();
-                cargarTabla(true);
+                    Libro libro = new Libro(id, isbn, titulo, autor, anio, tipo, editorial, true);
+                    ld.modificarLibro(libro);
+
+                    limpiarFormulario();
+                    cargarTabla(true);
+                }
             }
+
         } catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Dato faltante o erróneo. \nIntente de nuevo");
         }
@@ -296,7 +304,7 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
         jbModificar.setEnabled(true);
         jbEliminar.setEnabled(true);
         jbActivar.setEnabled(false);
-        
+
         cargarTabla(true);
     }//GEN-LAST:event_jrbLibrosActivosActionPerformed
 
@@ -305,7 +313,7 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
         jbModificar.setEnabled(false);
         jbEliminar.setEnabled(false);
         jbActivar.setEnabled(true);
-        
+
         cargarTabla(false);
     }//GEN-LAST:event_jrbLibrosInactivosActionPerformed
 
@@ -375,9 +383,9 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
 
     private void cargarTabla(boolean activos) {
         limpiarTabla();
-        
+
         List<Libro> libros;
-        if(activos){
+        if (activos) {
             libros = ld.listarLibros();
         } else {
             libros = ld.listarLibrosDesactivados();
@@ -402,7 +410,7 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
         jtfEditorial.setText("");
         jtfId.setText("");
     }
-    
+
     private void bGroup() {
         selectorLibros.add(jrbLibrosActivos);
         selectorLibros.add(jrbLibrosInactivos);

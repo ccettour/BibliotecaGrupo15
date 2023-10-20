@@ -160,10 +160,12 @@ public class LibrosView extends javax.swing.JInternalFrame {
             String editorial = jtfEditorial.getText();
             int cantEjemp = Integer.parseInt(jtfCantEjemplares.getText());
 
-            if (anio>=2024 || anio<0) {
+            if (anio >= 2024 || anio < 0) {
                 JOptionPane.showMessageDialog(null, "El año ingresado es incorrecto");
-            } else if (titulo.isEmpty() || editorial.isEmpty() || isbn<0 || isbn>Integer.MAX_VALUE){
+            } else if (titulo.isEmpty() || editorial.isEmpty() || isbn < 0 || isbn > Integer.MAX_VALUE) {
                 JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+            } else if (cantEjemp > 50) {
+                JOptionPane.showMessageDialog(this, "La cantidad máxima de ejemplares a crear es 50 \nIngrese una cantidad válida");
             } else {
                 Libro libro = new Libro(isbn, titulo, autor, anio, tipo, editorial, true);
                 ld.guardarLibro(libro);
@@ -221,7 +223,7 @@ public class LibrosView extends javax.swing.JInternalFrame {
         jtfAnio.setText("");
         jcbTipo.setSelectedIndex(0);
         jtfEditorial.setText("");
-        jtfCantEjemplares.setText(0+"");
+        jtfCantEjemplares.setText(0 + "");
     }
 
 }

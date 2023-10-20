@@ -122,13 +122,15 @@ public class EjemplaresView extends javax.swing.JInternalFrame {
             
             int cantEjemp = Integer.parseInt(jtfCantEjemplares.getText());
             
-            if (cantEjemp >= 1) {
+            if (cantEjemp >= 1 && cantEjemp <=50) {
                 for (int i = 1; i <= cantEjemp; i++) {
                     Ejemplar ejemplar = new Ejemplar(libro, 0);
                     ed.crearEjemplar(ejemplar);
                 }
-                JOptionPane.showMessageDialog(null, "Ejemplares creados");
+                JOptionPane.showMessageDialog(this, "Ejemplares creados");
                 jtfCantEjemplares.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ingrese la cantidad de ejemplares a crear \n Máximo: 50");
             }
         }catch(java.lang.NumberFormatException nfe){
             JOptionPane.showMessageDialog(this, "La cantidad ingresada es incorrecta");
