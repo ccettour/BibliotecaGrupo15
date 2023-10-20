@@ -34,7 +34,7 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
     public AdminLibrosView() {
         initComponents();
         crearCabecera();
-        cargarTabla();
+        bGroup();
         cargarCombo();
     }
 
@@ -47,6 +47,7 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        selectorLibros = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -69,12 +70,15 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtLibros = new javax.swing.JTable();
         jbModificar = new javax.swing.JButton();
+        jbActivar = new javax.swing.JButton();
         fondoLibros = new javax.swing.JLabel();
+        jrbLibrosActivos = new javax.swing.JRadioButton();
+        jrbLibrosInactivos = new javax.swing.JRadioButton();
 
         setClosable(true);
-        setMaximumSize(new java.awt.Dimension(600, 400));
-        setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(600, 400));
+        setMaximumSize(new java.awt.Dimension(600, 385));
+        setMinimumSize(new java.awt.Dimension(600, 385));
+        setPreferredSize(new java.awt.Dimension(600, 385));
         setVisible(true);
 
         jPanel1.setMinimumSize(new java.awt.Dimension(550, 328));
@@ -89,47 +93,47 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Datos del libro seleccionado:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 20));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ISBN:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
-        jPanel1.add(jtfIsbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 90, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        jPanel1.add(jtfIsbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 90, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Título:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
-        jPanel1.add(jtfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 260, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
+        jPanel1.add(jtfTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 260, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Autor:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
 
-        jPanel1.add(jcbAutores, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 170, -1));
+        jPanel1.add(jcbAutores, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Año:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 590, 10));
-        jPanel1.add(jtfAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, 50, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 590, 10));
+        jPanel1.add(jtfAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 50, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Tipo:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         jcbTipo.setModel(new DefaultComboBoxModel(bibliotecagrupo15.Tipo.values()));
-        jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 120, -1));
+        jPanel1.add(jcbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 120, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Editorial:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
-        jPanel1.add(jtfEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 200, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
+        jPanel1.add(jtfEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 200, -1));
 
         jbEliminar.setText("Eliminar");
         jbEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -137,15 +141,15 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
                 jbEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, -1, -1));
+        jPanel1.add(jbEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Id:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
 
         jtfId.setEnabled(false);
-        jPanel1.add(jtfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 50, -1));
+        jPanel1.add(jtfId, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 50, -1));
 
         jtLibros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,7 +169,7 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(jtLibros);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 560, 140));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 560, 100));
 
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -173,22 +177,56 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
                 jbModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, -1, -1));
+        jPanel1.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, -1, -1));
+
+        jbActivar.setText("Activar");
+        jbActivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActivarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
 
         fondoLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/fondo-admin-libros.png"))); // NOI18N
         jPanel1.add(fondoLibros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 360));
+
+        jrbLibrosActivos.setForeground(new java.awt.Color(255, 255, 255));
+        jrbLibrosActivos.setText("Ver libros activos");
+        jrbLibrosActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbLibrosActivosActionPerformed(evt);
+            }
+        });
+
+        jrbLibrosInactivos.setForeground(new java.awt.Color(255, 255, 255));
+        jrbLibrosInactivos.setText("Ver libros inactivos");
+        jrbLibrosInactivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbLibrosInactivosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 581, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(126, Short.MAX_VALUE)
+                .addComponent(jrbLibrosActivos)
+                .addGap(79, 79, 79)
+                .addComponent(jrbLibrosInactivos)
+                .addGap(113, 113, 113))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 353, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jrbLibrosActivos)
+                    .addComponent(jrbLibrosInactivos))
+                .addContainerGap(278, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE))
         );
@@ -231,6 +269,7 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
                 ld.modificarLibro(libro);
 
                 limpiarFormulario();
+                cargarTabla(true);
             }
         } catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Dato faltante o erróneo. \nIntente de nuevo");
@@ -247,10 +286,43 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
             int id = ld.buscarLibroXIsbn(isbn).getIdLibro();
 
             ld.deshabilitarLibro(id);
-            cargarTabla();
+            cargarTabla(true);
             limpiarFormulario();
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jrbLibrosActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbLibrosActivosActionPerformed
+        // TODO add your handling code here:
+        jbModificar.setEnabled(true);
+        jbEliminar.setEnabled(true);
+        jbActivar.setEnabled(false);
+        
+        cargarTabla(true);
+    }//GEN-LAST:event_jrbLibrosActivosActionPerformed
+
+    private void jrbLibrosInactivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbLibrosInactivosActionPerformed
+        // TODO add your handling code here:
+        jbModificar.setEnabled(false);
+        jbEliminar.setEnabled(false);
+        jbActivar.setEnabled(true);
+        
+        cargarTabla(false);
+    }//GEN-LAST:event_jrbLibrosInactivosActionPerformed
+
+    private void jbActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActivarActionPerformed
+        // TODO add your handling code here:
+        if (jtfId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione en la tabla el libro a activar");
+        } else {
+
+            int isbn = Integer.parseInt(jtfIsbn.getText());
+            int id = ld.buscarLibroXIsbn(isbn).getIdLibro();
+
+            ld.habilitarLibro(id);
+            cargarTabla(false);
+            limpiarFormulario();
+        }
+    }//GEN-LAST:event_jbActivarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -267,16 +339,20 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jbActivar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JComboBox<Autor> jcbAutores;
     private javax.swing.JComboBox<String> jcbTipo;
+    private javax.swing.JRadioButton jrbLibrosActivos;
+    private javax.swing.JRadioButton jrbLibrosInactivos;
     private javax.swing.JTable jtLibros;
     private javax.swing.JTextField jtfAnio;
     private javax.swing.JTextField jtfEditorial;
     private javax.swing.JTextField jtfId;
     private javax.swing.JTextField jtfIsbn;
     private javax.swing.JTextField jtfTitulo;
+    private javax.swing.ButtonGroup selectorLibros;
     // End of variables declaration//GEN-END:variables
 
     private void crearCabecera() {
@@ -297,10 +373,15 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
         }
     }
 
-    private void cargarTabla() {
+    private void cargarTabla(boolean activos) {
         limpiarTabla();
-
-        List<Libro> libros = ld.listarLibros();
+        
+        List<Libro> libros;
+        if(activos){
+            libros = ld.listarLibros();
+        } else {
+            libros = ld.listarLibrosDesactivados();
+        }
 
         for (Libro l : libros) {
             tabla.addRow(new Object[]{l.getIsbn(), l.getTitulo(), l.getAutor(), l.getAnio(), l.getTipo(), l.getEditorial()});
@@ -315,12 +396,15 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
     }
 
     public void limpiarFormulario() {
-
         jtfIsbn.setText("");
         jtfTitulo.setText("");
         jtfAnio.setText("");
         jtfEditorial.setText("");
         jtfId.setText("");
     }
-
+    
+    private void bGroup() {
+        selectorLibros.add(jrbLibrosActivos);
+        selectorLibros.add(jrbLibrosInactivos);
+    }
 }

@@ -187,6 +187,36 @@ public class LibroData {
         }
         return libros;
     }
+    
+    public List<Libro> listarLibrosDesactivados() {
+        String sql = "SELECT * FROM libro WHERE estado = 0";
+        ArrayList<Libro> libros = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Libro libro = new Libro();
+
+                libro.setIdLibro(rs.getInt("idLibro"));
+                libro.setIsbn(rs.getInt("isbn"));
+                libro.setTitulo(rs.getString("titulo"));
+                libro.setAutor(autorD.buscarAutor(rs.getInt("idAutor")));
+                libro.setAnio(rs.getInt("anio"));
+                libro.setTipo(Tipo.valueOf(rs.getString("tipo")));
+                libro.setEditorial(rs.getString("editorial"));
+                libro.setEstado(true);
+
+                libros.add(libro);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Libros");
+        }
+        return libros;
+    }
 
     public List<Libro> listarLibrosXAutor(Autor autor) {
         String sql = "SELECT * FROM libro WHERE estado = 1 AND idAutor=?";
