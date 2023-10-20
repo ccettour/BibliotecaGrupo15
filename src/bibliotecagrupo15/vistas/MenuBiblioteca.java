@@ -121,6 +121,11 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jMenu3.add(adminLibros);
 
         listadoDePrestamos.setText("Listado de Prestamos");
+        listadoDePrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listadoDePrestamosActionPerformed(evt);
+            }
+        });
         jMenu3.add(listadoDePrestamos);
 
         adminAutores.setText("Administracion de autores");
@@ -178,6 +183,17 @@ public class MenuBiblioteca extends javax.swing.JFrame {
        escritorio.add(bpv);
        escritorio.moveToFront(bpv);
     }//GEN-LAST:event_devolverActionPerformed
+
+    private void listadoDePrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoDePrestamosActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+       escritorio.repaint();
+       fondo();
+        ListaPrestamos lp = new ListaPrestamos();
+       lp.setVisible(true);
+       escritorio.add(lp);
+       escritorio.moveToFront(lp);
+    }//GEN-LAST:event_listadoDePrestamosActionPerformed
 
     /**
      * @param args the command line arguments

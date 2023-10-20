@@ -67,7 +67,6 @@ private DefaultTableModel tabla = new DefaultTableModel() {
         jLabel2.setText("Seleccione el prestamo que desea cancelar :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        tablaP.setBackground(new java.awt.Color(87, 87, 86));
         tablaP.setForeground(new java.awt.Color(255, 255, 255));
         tablaP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,7 +80,10 @@ private DefaultTableModel tabla = new DefaultTableModel() {
             }
         ));
         tablaP.setOpaque(false);
+        tablaP.setSelectionBackground(new java.awt.Color(136, 92, 8));
         tablaP.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tablaP.getTableHeader().setResizingAllowed(false);
+        tablaP.getTableHeader().setReorderingAllowed(false);
         tablaP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaPMouseClicked(evt);
@@ -152,7 +154,7 @@ private DefaultTableModel tabla = new DefaultTableModel() {
 private void cargarCabecera(){
 tabla.addColumn("ID");
 tabla.addColumn("NRO SOCIO");
-tabla.addColumn("NOMBRE DE SOCIO");
+tabla.addColumn("NOMBRE");
 tabla.addColumn("FECHA DE INICIO");
 tabla.addColumn("VENCIMIENTO");
 tablaP.setModel(tabla);

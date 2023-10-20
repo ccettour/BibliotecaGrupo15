@@ -178,31 +178,30 @@ public class PrestamoData {
         return lectores;
     }
 
-    public List<Lector> ListarLectoresxPrestamoDesactivado() {
-        ArrayList<Lector> lectores = new ArrayList<>();
-        String sql = "SELECT nroSocio, lec.nombre, mail "
-                + "FROM `lector` AS lec JOIN prestamo "
-                + "ON lec.nroSocio=prestamo.idLector WHERE NOT prestamo.estado=1";
+    public List<Prestamo> ListarPrestamoxLectores() {
+        ArrayList<Prestamo> prestamos = new ArrayList<>();
+        String sql = "SELECT * FROM `prestamo` as p "
+                + "JOIN lector ON p.idLector=lector.nroSocio WHERE p.estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-
             ResultSet rs = ps.executeQuery();
-
             while (rs.next()) {
-                Lector lector = new Lector();
-                lector.setSocio(rs.getInt("nroSocio"));
-                //lector.setDomicilio(rs.getString("domicilio"));
-                lector.setMail(rs.getString("mail"));
-                lector.setNombre(rs.getString("nombre"));
-                //lector.setEstado(rs.getBoolean("estado"));
-                lectores.add(lector);
+                Prestamo pres = new Prestamo();
+                pres.setIdPrestamo(rs.getInt("idPrestamo"));
+                pres.setFechaFin(rs.getDate("fechaFin").toLocalDate());
+                pres.setFechaInicio(rs.getDate("fechaInicio").toLocalDate());
+                pres.setEstado(rs.getBoolean("estado"));
+                pres.setLector(ld.buscarLector(rs.getInt("idLector")));
+                pres.setEjemplar(ed.buscarEjemplar(rs.getInt("idEjemplar")));
+                prestamos.add(pres);
             }
             ps.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de prestamos");
         }
-        return lectores;
+
+        return prestamos;
     }
 
     public List<Lector> ListarLectoresxFechaVencida() {

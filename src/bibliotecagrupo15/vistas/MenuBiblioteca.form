@@ -88,6 +88,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listado de Prestamos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listadoDePrestamosActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="adminAutores">
               <Properties>
