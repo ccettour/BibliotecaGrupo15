@@ -7,9 +7,12 @@ package bibliotecagrupo15.vistas;
 import bibliotecagrupo15.accesoADatos.LectorData;
 import bibliotecagrupo15.accesoADatos.PrestamoData;
 import bibliotecagrupo15.entidades.Lector;
+import bibliotecagrupo15.entidades.Libro;
 import bibliotecagrupo15.entidades.Prestamo;
 import java.awt.Color;
+import java.sql.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,17 +32,12 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
      */
     PrestamoData pd = new PrestamoData();
     LectorData ld = new LectorData();
+
     public ListaPrestamos() {
         initComponents();
-
-        grupo();
-        Color color = new Color(87, 87, 86);
-//Color color2=new Color(255,255,255);
-        tablaP.setBackground(color);
-//jTabla_registro.getTableHeader().setBackground(new Color(32, 136, 203));
-        tablaP.getTableHeader().setBackground(color);
-//tablaP.getTableHeader().setForeground(color2);
-
+        grupo();  
+        buscar.setVisible(false);
+        fecha.setVisible(false);
     }
 
     /**
@@ -60,8 +58,9 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         LibrosPrestadosxFecha = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaP = new javax.swing.JTable();
-        jRadioButton1 = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
+        fecha = new com.toedter.calendar.JDateChooser();
+        buscar = new javax.swing.JButton();
 
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(540, 368));
@@ -84,7 +83,7 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         });
         jPanel1.add(ListaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        SociosActivos.setText("Socios con Prestamos activos");
+        SociosActivos.setText("Socios con Prestamos vencidos");
         SociosActivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SociosActivosActionPerformed(evt);
@@ -92,19 +91,21 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         });
         jPanel1.add(SociosActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
-        LibrosPrestadosxFecha.setText("Libros Prestados");
-        jPanel1.add(LibrosPrestadosxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
+        LibrosPrestadosxFecha.setText("Lista de Libros Prestados por fecha");
+        LibrosPrestadosxFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LibrosPrestadosxFechaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(LibrosPrestadosxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
 
         tablaP.setForeground(new java.awt.Color(255, 255, 255));
         tablaP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {}
             },
             new String [] {
-                "", "", "", ""
+
             }
         ));
         tablaP.setSelectionBackground(new java.awt.Color(136, 92, 8));
@@ -113,24 +114,28 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 470, 180));
 
-        jRadioButton1.setText("Prestamos vencidos");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
-
         jLabel3.setForeground(new java.awt.Color(58, 58, 58));
         jLabel3.setText("Esta ventana es solamente para dar un vistazo a la organizacion");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 470, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 480, -1));
+        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 140, -1));
+
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
         );
 
         pack();
@@ -138,30 +143,66 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
 
     private void ListaPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaPrestamosActionPerformed
         // TODO add your handling code here:
+        buscar.setVisible(false);
+        fecha.setVisible(false);
         borrarcabecera();
         cargarCabecera1();
         cargarTabla1();
         ListaPrestamos.setEnabled(false);
         SociosActivos.setEnabled(true);
+        LibrosPrestadosxFecha.setEnabled(true);
     }//GEN-LAST:event_ListaPrestamosActionPerformed
 
     private void SociosActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SociosActivosActionPerformed
         // TODO add your handling code here:
+        buscar.setVisible(false);
+        fecha.setVisible(false);
         ListaPrestamos.setEnabled(true);
         SociosActivos.setEnabled(false);
+        LibrosPrestadosxFecha.setEnabled(true);
+        borrarcabecera();
+        cargarCabecera2();
+        cargarTabla2();
     }//GEN-LAST:event_SociosActivosActionPerformed
+
+    private void LibrosPrestadosxFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LibrosPrestadosxFechaActionPerformed
+        // TODO add your handling code here:
+        ListaPrestamos.setEnabled(true);
+        SociosActivos.setEnabled(true);
+        LibrosPrestadosxFecha.setEnabled(false);
+        borrarcabecera();
+        cargarCabecera3();
+        buscar.setVisible(true);
+        fecha.setVisible(true);
+        JOptionPane.showMessageDialog(this, "Ingrese una fecha con el calendario");
+
+    }//GEN-LAST:event_LibrosPrestadosxFechaActionPerformed
+
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+        try {
+            limpiar();
+            java.util.Date f = fecha.getDate();
+            java.sql.Date sql = new java.sql.Date(f.getTime());
+            cargarTabla3(sql);
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese una fecha por favor");
+        }
+
+    }//GEN-LAST:event_buscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton LibrosPrestadosxFecha;
     private javax.swing.JRadioButton ListaPrestamos;
     private javax.swing.JRadioButton SociosActivos;
+    private javax.swing.JButton buscar;
+    private com.toedter.calendar.JDateChooser fecha;
     private javax.swing.ButtonGroup grupob;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaP;
     // End of variables declaration//GEN-END:variables
@@ -177,13 +218,13 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         for (; p >= 0; p--) {
             tabla.removeRow(p);
         }
+    }
 
+    private void borrarcabecera() {
+        tabla.setColumnCount(0);
+        tablaP.setModel(tabla);
     }
-    private void borrarcabecera(){
-    tabla.setColumnCount(0);
-    tablaP.setModel(tabla);
-    }
-    
+
     private void cargarCabecera1() {
         tabla.addColumn("ID");
         tabla.addColumn("NRO SOCIO");
@@ -191,10 +232,34 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         tabla.addColumn("FECHA DE INICIO");
         tabla.addColumn("VENCIMIENTO");
         tablaP.setModel(tabla);
-        
+
+    }
+
+    private void cargarCabecera2() {
+        tabla.addColumn("NRO SOCIO");
+        tabla.addColumn("NOMBRE");
+        tabla.addColumn("MAIL");
+        tablaP.setModel(tabla);
+
+    }
+
+    private void cargarCabecera3() {
+        tabla.addColumn("TITULO");
+        tabla.addColumn("AUTOR");
+        tabla.addColumn("TIPO");
+        tabla.addColumn("EDITORIAL");
+        tabla.addColumn("AÑO");
+        tablaP.setModel(tabla);
+
     }
 
     private void cargarTabla1() {
+        Color color = new Color(87, 87, 86);
+//Color color2=new Color(255,255,255);
+        tablaP.setBackground(color);
+//jTabla_registro.getTableHeader().setBackground(new Color(32, 136, 203));
+        tablaP.getTableHeader().setBackground(color);
+//tablaP.getTableHeader().setForeground(color2);
         limpiar();
         List<Prestamo> prestamos = pd.ListarPrestamos();
         for (Prestamo p : prestamos) {
@@ -203,14 +268,33 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
 
     }
 
-    private void cargarTabla2(int id) {
+    private void cargarTabla2() {
+        Color color = new Color(87, 87, 86);
+//Color color2=new Color(255,255,255);
+        tablaP.setBackground(color);
+//jTabla_registro.getTableHeader().setBackground(new Color(32, 136, 203));
+        tablaP.getTableHeader().setBackground(color);
+//tablaP.getTableHeader().setForeground(color2);
         limpiar();
         List<Lector> l = pd.ListarLectoresxFechaVencida();
         for (Lector lec : l) {
-            tabla.addRow(new Object[]{});
+            tabla.addRow(new Object[]{lec.getSocio(), lec.getNombre(), lec.getMail()});
         }
 
     }
-   
-    
+
+    private void cargarTabla3(Date fecha) {
+        Color color = new Color(87, 87, 86);
+//Color color2=new Color(255,255,255);
+        tablaP.setBackground(color);
+//jTabla_registro.getTableHeader().setBackground(new Color(32, 136, 203));
+        tablaP.getTableHeader().setBackground(color);
+//tablaP.getTableHeader().setForeground(color2);
+        limpiar();
+        List<Libro> li = pd.ListarLibrosxFecha(fecha);
+        for (Libro lib : li) {
+            tabla.addRow(new Object[]{lib.getTitulo(), lib.getAutor(), lib.getTipo(), lib.getEditorial(), lib.getAnio()});
+        }
+
+    }
 }
