@@ -4,6 +4,7 @@
  */
 package bibliotecagrupo15.vistas;
 
+import bibliotecagrupo15.accesoADatos.LectorData;
 import bibliotecagrupo15.accesoADatos.PrestamoData;
 import bibliotecagrupo15.entidades.Lector;
 import bibliotecagrupo15.entidades.Prestamo;
@@ -27,10 +28,10 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
      * Creates new form ListaPrestamos
      */
     PrestamoData pd = new PrestamoData();
-
+    LectorData ld = new LectorData();
     public ListaPrestamos() {
         initComponents();
-        Socios.setVisible(false);
+
         grupo();
         Color color = new Color(87, 87, 86);
 //Color color2=new Color(255,255,255);
@@ -38,6 +39,7 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
 //jTabla_registro.getTableHeader().setBackground(new Color(32, 136, 203));
         tablaP.getTableHeader().setBackground(color);
 //tablaP.getTableHeader().setForeground(color2);
+
     }
 
     /**
@@ -59,12 +61,12 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaP = new javax.swing.JTable();
         jRadioButton1 = new javax.swing.JRadioButton();
-        Socios = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(535, 370));
+        setPreferredSize(new java.awt.Dimension(540, 368));
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(540, 365));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -88,10 +90,10 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
                 SociosActivosActionPerformed(evt);
             }
         });
-        jPanel1.add(SociosActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
+        jPanel1.add(SociosActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         LibrosPrestadosxFecha.setText("Libros Prestados");
-        jPanel1.add(LibrosPrestadosxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
+        jPanel1.add(LibrosPrestadosxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
         tablaP.setForeground(new java.awt.Color(255, 255, 255));
         tablaP.setModel(new javax.swing.table.DefaultTableModel(
@@ -112,23 +114,23 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 470, 180));
 
         jRadioButton1.setText("Prestamos vencidos");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
-
-        jPanel1.add(Socios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 250, -1));
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(58, 58, 58));
-        jLabel3.setText("Esta ventana es para dar un vistazo a la organizacion, si desea editar datos revise las otras opciones");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, -1, -1));
+        jLabel3.setText("Esta ventana es solamente para dar un vistazo a la organizacion");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 470, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
         );
 
         pack();
@@ -136,6 +138,7 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
 
     private void ListaPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaPrestamosActionPerformed
         // TODO add your handling code here:
+        borrarcabecera();
         cargarCabecera1();
         cargarTabla1();
         ListaPrestamos.setEnabled(false);
@@ -145,14 +148,13 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
     private void SociosActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SociosActivosActionPerformed
         // TODO add your handling code here:
         ListaPrestamos.setEnabled(true);
-        
+        SociosActivos.setEnabled(false);
     }//GEN-LAST:event_SociosActivosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton LibrosPrestadosxFecha;
     private javax.swing.JRadioButton ListaPrestamos;
-    private javax.swing.JComboBox<Lector> Socios;
     private javax.swing.JRadioButton SociosActivos;
     private javax.swing.ButtonGroup grupob;
     private javax.swing.JLabel jLabel1;
@@ -177,7 +179,11 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         }
 
     }
-
+    private void borrarcabecera(){
+    tabla.setColumnCount(0);
+    tablaP.setModel(tabla);
+    }
+    
     private void cargarCabecera1() {
         tabla.addColumn("ID");
         tabla.addColumn("NRO SOCIO");
@@ -185,7 +191,7 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         tabla.addColumn("FECHA DE INICIO");
         tabla.addColumn("VENCIMIENTO");
         tablaP.setModel(tabla);
-
+        
     }
 
     private void cargarTabla1() {
@@ -197,6 +203,14 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
 
     }
 
-    
+    private void cargarTabla2(int id) {
+        limpiar();
+        List<Lector> l = pd.ListarLectoresxFechaVencida();
+        for (Lector lec : l) {
+            tabla.addRow(new Object[]{});
+        }
+
+    }
+   
     
 }

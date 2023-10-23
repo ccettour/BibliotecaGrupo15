@@ -184,8 +184,8 @@ public class PrestamoData {
                 + "JOIN lector ON p.idLector=lector.nroSocio WHERE p.idLector=? AND p.estado=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
             ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Prestamo pres = new Prestamo();
                 pres.setIdPrestamo(rs.getInt("idPrestamo"));
