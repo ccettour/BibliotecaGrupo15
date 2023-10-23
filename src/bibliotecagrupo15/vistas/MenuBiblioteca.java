@@ -4,7 +4,7 @@
  */
 package bibliotecagrupo15.vistas;
 
-import java.awt.Color;
+
 
 /**
  *
@@ -17,9 +17,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
      */
     public MenuBiblioteca() {
         initComponents();
-        Color color = new Color(0,0,0);
-        jMenuBar1.setBackground(color);
-        jMenuBar1.setForeground(Color.WHITE);
+
     }
 
     /**
@@ -50,6 +48,8 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         adminAutores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 0));
+        setLocationByPlatform(true);
         setResizable(false);
 
         fondoMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -71,6 +71,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
+        jMenuBar1.setBorder(null);
         jMenuBar1.setForeground(new java.awt.Color(239, 239, 239));
         jMenuBar1.setBorderPainted(false);
         jMenuBar1.setOpaque(true);
