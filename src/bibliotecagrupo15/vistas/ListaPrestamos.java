@@ -61,11 +61,12 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         fecha = new com.toedter.calendar.JDateChooser();
         buscar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(540, 368));
+        setPreferredSize(new java.awt.Dimension(520, 368));
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(540, 365));
+        jPanel1.setPreferredSize(new java.awt.Dimension(520, 365));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -73,7 +74,7 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel2.setText("Seleccione la vista que desea revisar: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         ListaPrestamos.setText("Lista de Prestamos ");
         ListaPrestamos.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +82,7 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
                 ListaPrestamosActionPerformed(evt);
             }
         });
-        jPanel1.add(ListaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jPanel1.add(ListaPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         SociosActivos.setText("Socios con Prestamos vencidos");
         SociosActivos.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +90,7 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
                 SociosActivosActionPerformed(evt);
             }
         });
-        jPanel1.add(SociosActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPanel1.add(SociosActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         LibrosPrestadosxFecha.setText("Lista de Libros Prestados por fecha");
         LibrosPrestadosxFecha.addActionListener(new java.awt.event.ActionListener() {
@@ -97,8 +98,9 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
                 LibrosPrestadosxFechaActionPerformed(evt);
             }
         });
-        jPanel1.add(LibrosPrestadosxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
+        jPanel1.add(LibrosPrestadosxFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
+        tablaP.setBackground(new java.awt.Color(87, 87, 86));
         tablaP.setForeground(new java.awt.Color(255, 255, 255));
         tablaP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,34 +110,44 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
 
             }
         ));
+        tablaP.setOpaque(false);
         tablaP.setSelectionBackground(new java.awt.Color(136, 92, 8));
         tablaP.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tablaP);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 470, 180));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 470, 180));
 
-        jLabel3.setForeground(new java.awt.Color(58, 58, 58));
+        jLabel3.setForeground(new java.awt.Color(179, 84, 14));
         jLabel3.setText("Esta ventana es solamente para dar un vistazo a la organizacion");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 480, -1));
-        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 140, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 480, -1));
 
+        fecha.setBackground(new java.awt.Color(87, 87, 86));
+        jPanel1.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 140, -1));
+
+        buscar.setBackground(new java.awt.Color(87, 87, 86));
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
         buscar.setText("Buscar");
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarActionPerformed(evt);
             }
         });
-        jPanel1.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, -1, -1));
+        jPanel1.add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/fondo-ListadoPrestamos.jpg"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 350));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -202,6 +214,7 @@ public class ListaPrestamos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaP;
