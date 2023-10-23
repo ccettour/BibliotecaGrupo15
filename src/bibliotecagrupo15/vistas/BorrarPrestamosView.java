@@ -51,6 +51,7 @@ private DefaultTableModel tabla = new DefaultTableModel() {
         cancelar = new javax.swing.JButton();
         presS = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
         setMinimumSize(new java.awt.Dimension(560, 370));
@@ -91,7 +92,7 @@ private DefaultTableModel tabla = new DefaultTableModel() {
         });
         jScrollPane1.setViewportView(tablaP);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 510, 180));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 510, 200));
 
         cancelar.setBackground(new java.awt.Color(86, 86, 85));
         cancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,25 +102,29 @@ private DefaultTableModel tabla = new DefaultTableModel() {
                 cancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+        jPanel1.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, -1, -1));
 
         presS.setEditable(false);
         presS.setBackground(new java.awt.Color(89, 89, 88));
         presS.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(presS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 330, -1));
+        jPanel1.add(presS, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 330, -1));
 
         jLabel3.setText("Prestamo seleccionado: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/fondo-borrarPrestamos.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 340));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
         );
 
         pack();
@@ -145,6 +150,7 @@ private DefaultTableModel tabla = new DefaultTableModel() {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField presS;
