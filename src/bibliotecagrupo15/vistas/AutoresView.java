@@ -10,12 +10,26 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import bibliotecagrupo15.entidades.Autor;
 import bibliotecagrupo15.accesoADatos.AutorData;
+import bibliotecagrupo15.accesoADatos.Conexion;
+import org.mariadb.jdbc.Connection;
         
 public class AutoresView extends javax.swing.JInternalFrame {
 
+    DefaulTableModel dtm=new DefaulTableModel ();
+    private AutorData alu=new AutorData();
+    private Conexion conet=new Conexion ();
+    
+    Conexion con1 = new Conexion ();
+    Connection conet;
+    DefaulTableModel modelo;
+    Statement st;
+    ResultSet rs;
+    
 
     public AutoresView() {
         initComponents();
+        setLocationRelativeTo(null);
+        consultar ();
     }
 
     @SuppressWarnings("unchecked")
@@ -36,7 +50,6 @@ public class AutoresView extends javax.swing.JInternalFrame {
         jFechaNacimiento = new com.toedter.calendar.JDateChooser();
         jNacionalidad = new javax.swing.JTextField();
         jTextoNacion = new javax.swing.JLabel();
-        jBotonModificar1 = new javax.swing.JButton();
         jBotonCrear = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -76,28 +89,32 @@ public class AutoresView extends javax.swing.JInternalFrame {
 
         jTextoNacion.setText("Nacionalidad");
 
-        jBotonModificar1.setText("Modificar");
-
         jBotonCrear.setText("Crear");
+        jBotonCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotonCrearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextoIdentificacion)
-                    .addComponent(jTextoNacion, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jBotonModificar1)
-                        .addGap(34, 34, 34)
-                        .addComponent(jBotonCrear))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextoFechaNacimien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFechaNacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextoIdentificacion)
+                            .addComponent(jTextoNacion, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextoFechaNacimien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jFechaNacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jBotonCrear)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -116,9 +133,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBotonModificar1)
-                    .addComponent(jBotonCrear))
+                .addComponent(jBotonCrear)
                 .addGap(31, 31, 31))
         );
 
@@ -126,10 +141,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
 
         jAutores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nombre", "Fecha de Nacimiento", "Nacionalidad"
@@ -183,8 +195,18 @@ public class AutoresView extends javax.swing.JInternalFrame {
         jDesktopPane1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 290, 180));
 
         jBotonEliminar.setText("Eliminar");
+        jBotonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotonEliminarActionPerformed(evt);
+            }
+        });
 
         jBotonModificar2.setText("Modificar");
+        jBotonModificar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotonModificar2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -237,33 +259,81 @@ public class AutoresView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jNacionalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNacionalidadActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jNacionalidadActionPerformed
 
-    
     private void jIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIdentificacionActionPerformed
-        // TODO add your handling code here:
+ 
     }//GEN-LAST:event_jIdentificacionActionPerformed
 
     private void jBuscarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarAutorActionPerformed
-        // TODO add your handling code here:
-        
-        
-        jTDocumento.setEditable(false);
-        
-        try{
-            int dni=Integer.parseInt(jTDocumento.getText());
-            Alumno a=alu.buscarAlumnoPorDNI(dni);
-            jTApellido.setText(a.getApellido());
-            jTNombre.setText(a.getNombre());
-            jTFecha.setDate(Date.valueOf(a.getFechaNac()));
-            jTEstado.setSelected(a.isEstado());
-        } catch(NullPointerException npe){
-            System.out.println("El alumno no existe");
-        }
+
     }//GEN-LAST:event_jBuscarAutorActionPerformed
 
-    private void jAutoresActionPerformed(java.awt.event.ActionEvent evt)
+    private void jBotonModificar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonModificar2ActionPerformed
+        // TODO add your handling code here:
+    //    try {
+     
+    //    int dni = Integer.parseInt(jTDocumento.getText());
+    //    String apellido = jTApellido.getText();
+    //    String nombre = jTNombre.getText();
+    //    LocalDate f =jTFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    //    boolean estado=activo;
+    //    int id=alu.buscarAlumnoPorDNI(dni).getIdAlumno();
+       
+        
+    //    Alumno a1=new Alumno (id,dni,apellido,nombre,f,estado);
+        
+    //    alu.modificarAlumno(a1);
+        
+    //    } catch (java.lang.NumberFormatException e) {
+    //        JOptionPane.showMessageDialog(this, "Uno de los campos fue ingresado "
+    //                + "incorrectamente o se encuentra vacío"+"\nIntente de nuevo")
+    }//GEN-LAST:event_jBotonModificar2ActionPerformed
+
+    private void jBotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonEliminarActionPerformed
+    //int dni=Integer.parseInt(jTDocumento.getText());
+    //   int id=alu.buscarAlumnoPorDNI(dni).getIdAlumno();
+       
+    //   alu.eliminarAlumno(id);
+    //   limpiarFormulario();
+    }//GEN-LAST:event_jBotonEliminarActionPerformed
+
+    private void jBotonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonCrearActionPerformed
+        // TODO add your handling code here:
+    //    Alumno a=new Alumno();
+        
+    //    int dni = Integer.parseInt(jTDocumento.getText());
+    //    String apellido = jTApellido.getText();
+    //    String nombre = jTNombre.getText();
+    //    LocalDate f =jTFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+    //    a.setDni(dni);
+    //    a.setApellido(apellido);
+    //    a.setNombre(nombre);
+    //    a.setFechaNac(f);
+    //    a.setEstado(activo);
+        
+    //    alu.guardarAlumno(a);
+    //    limpiarFormulario();
+    }//GEN-LAST:event_jBotonCrearActionPerformed
+
+    void consultar() {
+        String sql = "select * from clientes"
+                try {
+                    conet = con1.getConnection;
+                    st = conet.createStatement ();
+                    Object[] cliente = new Object[3];
+                    modelo = (DefaulTableModel) jAutores.getModel ();
+                    while (rs.next()){
+                        cliente [0] = rs.getString ("Nombre");
+                        cliente [1] = rs.getInt ("Fecha de Nacimiento");
+                        cliente [2] = rs.getString ("Nacionalidad");
+                        modelo.addRow (cliente)
+                    }
+                    jAutores.setModel (modelo);
+                } catch (Exception e) {
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.util.List<bibliotecagrupo15.vistas.Customer> customerList;
@@ -271,7 +341,6 @@ public class AutoresView extends javax.swing.JInternalFrame {
     private javax.swing.JTable jAutores;
     private javax.swing.JButton jBotonCrear;
     private javax.swing.JButton jBotonEliminar;
-    private javax.swing.JButton jBotonModificar1;
     private javax.swing.JButton jBotonModificar2;
     private javax.swing.JComboBox<String> jBuscarAutor;
     private javax.swing.JDesktopPane jDesktopPane1;

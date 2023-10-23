@@ -1,4 +1,4 @@
-package bibliotecagrupo15.accesoADatos;
+    package bibliotecagrupo15.accesoADatos;
 
 import java.sql.*;
 
@@ -11,7 +11,7 @@ public class Conexion {
     private static final String PASSWORD="";
     private static Connection connection;
     
-    private Conexion(){}
+    public Conexion(){}
     
     public static Connection getConexion(){
     if(connection==null){
