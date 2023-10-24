@@ -26,7 +26,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -51,16 +51,16 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/Fondo-Inicio.jpg"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 380));
 
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -103,6 +103,11 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jMenu3.add(listadoDePrestamos);
 
         adminAutores.setText("Administracion de autores");
+        adminAutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminAutoresActionPerformed(evt);
+            }
+        });
         jMenu3.add(adminAutores);
 
         jMenuBar1.add(jMenu3);
@@ -113,15 +118,26 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void adminAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminAutoresActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        //fondoMenu();
+        AutoresView av = new AutoresView();
+        av.setVisible(true);
+        escritorio.add(av);
+        escritorio.moveToFront(av);
+    }//GEN-LAST:event_adminAutoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +179,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     private javax.swing.JMenuItem agregarEjemplares;
     private javax.swing.JMenuItem agregarLibro;
     private javax.swing.JMenuItem devolver;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
