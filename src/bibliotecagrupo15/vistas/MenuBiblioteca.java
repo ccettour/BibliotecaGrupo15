@@ -17,7 +17,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
      */
     public MenuBiblioteca() {
         initComponents();
-
+        setLocationRelativeTo(null);
     }
 
     /**
