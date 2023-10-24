@@ -301,18 +301,18 @@ public class AdminLibrosView extends javax.swing.JInternalFrame {
 
     private void jrbLibrosActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbLibrosActivosActionPerformed
         // TODO add your handling code here:
-        jbModificar.setEnabled(true);
-        jbEliminar.setEnabled(true);
-        jbActivar.setEnabled(false);
+        jbModificar.setVisible(true);
+        jbEliminar.setVisible(true);
+        jbActivar.setVisible(false);
 
         cargarTabla(true);
     }//GEN-LAST:event_jrbLibrosActivosActionPerformed
 
     private void jrbLibrosInactivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbLibrosInactivosActionPerformed
         // TODO add your handling code here:
-        jbModificar.setEnabled(false);
-        jbEliminar.setEnabled(false);
-        jbActivar.setEnabled(true);
+        jbModificar.setVisible(false);
+        jbEliminar.setVisible(false);
+        jbActivar.setVisible(true);
 
         cargarTabla(false);
     }//GEN-LAST:event_jrbLibrosInactivosActionPerformed
