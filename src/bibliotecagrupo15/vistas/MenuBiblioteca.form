@@ -83,6 +83,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Administraci&#xf3;n de autores"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminAutoresActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
