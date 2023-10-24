@@ -69,6 +69,11 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jMenu1.setText("Socios");
 
         usuario.setText("Crear Socio");
+        usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioActionPerformed(evt);
+            }
+        });
         jMenu1.add(usuario);
 
         jMenuBar1.add(jMenu1);
@@ -106,6 +111,11 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jMenu3.setText("Administracion");
 
         listadoDeSocios.setText("Listado de Socios");
+        listadoDeSocios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listadoDeSociosActionPerformed(evt);
+            }
+        });
         jMenu3.add(listadoDeSocios);
 
         listaDeLibros.setText("Administración de libros");
@@ -190,6 +200,30 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         escritorio.add(auv);
         escritorio.moveToFront(auv);
     }//GEN-LAST:event_adminAutoresActionPerformed
+
+    private void listadoDeSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoDeSociosActionPerformed
+        // TODO add your handling code here:
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        ListadoSociosView lsv = new ListadoSociosView();
+        lsv.setVisible(true);
+        escritorio.add(lsv);
+        escritorio.moveToFront(lsv);
+    }//GEN-LAST:event_listadoDeSociosActionPerformed
+
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
+        // TODO add your handling code here:
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        LectorView lv = new LectorView();
+        lv.setVisible(true);
+        escritorio.add(lv);
+        escritorio.moveToFront(lv);
+    }//GEN-LAST:event_usuarioActionPerformed
 
     /**
      * @param args the command line arguments

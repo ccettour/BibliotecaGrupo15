@@ -64,6 +64,52 @@ public class LectorData {
         }
         return lector;
     }
+    
+    
+    public List<Lector> listarLectoresActivos() {
+        String sql = "SELECT* FROM lector WHERE estado=1";
+        ArrayList<Lector> lectores = new ArrayList<>();
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Lector lector = new Lector();
+                lector.setSocio(rs.getInt("nroSocio"));
+                lector.setNombre(rs.getString("nombre"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
+                lector.setEstado(true);
+                lectores.add(lector);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
+        }
+        return lectores;
+    }
+           public List<Lector> listarLectoresInactivos() {
+        String sql = "SELECT* FROM lector WHERE estado=0";
+        ArrayList<Lector> lectores = new ArrayList<>();
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Lector lector = new Lector();
+                lector.setSocio(rs.getInt("nroSocio"));
+                lector.setNombre(rs.getString("nombre"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
+                lector.setEstado(true);
+                lectores.add(lector);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
+        }
+        return lectores;
+    }
 
     public List<Lector> listarLectores() {
         String sql = "SELECT* FROM lector WHERE estado=1";
