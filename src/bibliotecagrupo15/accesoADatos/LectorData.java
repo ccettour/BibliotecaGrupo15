@@ -1,13 +1,9 @@
 package bibliotecagrupo15.accesoADatos;
 
 import bibliotecagrupo15.entidades.Lector;
-import java.awt.List;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class LectorData {
@@ -20,20 +16,19 @@ public class LectorData {
     }
 
     public void guardarLector(Lector lector) {
-        String sql = "INSERT INTO lector(nroSocio,nombre,domicilio,mail,estado)"
-                + "VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO lector(nombre,domicilio,mail,estado)"
+                + "VALUES(?,?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, lector.getSocio());
-            ps.setString(2, lector.getNombre());
-            ps.setString(3, lector.getDomicilio());
-            ps.setString(4, lector.getMail());
-            ps.setBoolean(5, lector.isEstado());
+            ps.setString(1, lector.getNombre());
+            ps.setString(2, lector.getDomicilio());
+            ps.setString(3, lector.getMail());
+            ps.setBoolean(4, lector.isEstado());
 
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                lector.setIdLector(rs.getInt(1));
+                lector.setSocio(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Lector añadido con exito");
             }
             ps.close();
@@ -42,63 +37,86 @@ public class LectorData {
 
         }
     }
-    public Lector buscarLector(int idLector) {
+
+    public Lector buscarLector(int nroSocio) {
+
+        String sql = "SELECT nombre,domicilio,mail FROM lector WHERE nroSocio=? AND estado=1";
         Lector lector = null;
-        String sql = "SELECT nroSocio,nombre,domicilio,mail FROM lector WHERE idLector=? AND estado=1";
-        PreparedStatement ps = null;
         try {
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, idLector);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, nroSocio);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 lector = new Lector();
-                lector.setIdLector(idLector);
-                lector.setSocio(rs.getInt("nroSocio"));
+                lector.setSocio(nroSocio);
                 lector.setNombre("nombre");
+                lector.setDomicilio("domicilio");
                 lector.setMail("mail");
                 lector.setEstado(true);
-                JOptionPane.showMessageDialog(null,"lector encontrado");
+
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el lector");
             }
             ps.close();
         } catch (SQLException x) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + x.getMessage());
-
         }
         return lector;
-
     }
-    public List <Lector> listarLectores(){
-      String sql="SELECT* FROM lector WHERE estado=1";
-     ArrayList<Lector> lectores=new ArrayList<>();
+
+    
+    public List<Lector> listarLectoresActivos() {
+        String sql = "SELECT* FROM lector WHERE estado=1";
+        ArrayList<Lector> lectores = new ArrayList<>();
         try {
-         
-         PreparedStatement ps=con.prepareStatement(sql);
-         ResultSet rs=ps.executeQuery();
-         while(rs.next()){
-        Lector lector=new Lector();
-        lector.setIdLector(idLector);
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Lector lector = new Lector();
                 lector.setSocio(rs.getInt("nroSocio"));
-                lector.setNombre("nombre");
-                lector.setMail("mail");
+                lector.setNombre(rs.getString("nombre"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
                 lector.setEstado(true);
-                lectores.
+                lectores.add(lector);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
         }
-        } catch (Exception e) {
+        return lectores;
+    }
+           public List<Lector> listarLectoresInactivos() {
+        String sql = "SELECT* FROM lector WHERE estado=0";
+        ArrayList<Lector> lectores = new ArrayList<>();
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Lector lector = new Lector();
+                lector.setSocio(rs.getInt("nroSocio"));
+                lector.setNombre(rs.getString("nombre"));
+                lector.setDomicilio(rs.getString("domicilio"));
+                lector.setMail(rs.getString("mail"));
+                lector.setEstado(true);
+                lectores.add(lector);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla");
         }
-
-
-}
-
-
+        return lectores;
+    }
+    
 
     public void modificarLector(Lector lector) {
-        String sql = "UPDATE lector SET nombre=?,domicilio=?,mail=?,estado=? WHERE nroSocio=?";
-        PreparedStatement ps = null;
-        try {
 
+        try {
+            String sql = "UPDATE lector SET nombre=?,domicilio=?,mail=?,estado=? WHERE nroSocio=?";
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, lector.getNombre());
             ps.setString(2, lector.getDomicilio());
             ps.setString(3, lector.getMail());
@@ -107,34 +125,32 @@ public class LectorData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-
                 JOptionPane.showMessageDialog(null, "Lector modificado");
             } else {
                 JOptionPane.showMessageDialog(null, "El lector no existe");
             }
         } catch (SQLException x) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + x.getMessage());
-
         }
-
     }
 
-    public void eliminarLector(Lector lector) {
+    public void eliminarLector(int nroSocio) {
         try {
             String sql = "UPDATE lector SET estado=0 WHERE nroSocio=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,lector.getSocio());
-            int fila = ps.executeUpdate();
+            ps.setInt(1,nroSocio);
+            int exito= ps.executeUpdate();
 
-            if (fila == 1) {
+            if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Se elimino el lector");
             }
             ps.close();
 
         } catch (SQLException x) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla" + x.getMessage());
-
         }
-
     }
+    
+ 
+
 }

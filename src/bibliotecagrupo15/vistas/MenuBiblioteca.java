@@ -26,21 +26,130 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        escritorio = new javax.swing.JDesktopPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        usuario = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        agregarLibro = new javax.swing.JMenuItem();
+        agregarEjemplares = new javax.swing.JMenuItem();
+        prestamos = new javax.swing.JMenu();
+        pedirPrestamo = new javax.swing.JMenuItem();
+        devolver = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        listadoDeSocios = new javax.swing.JMenuItem();
+        listaDeLibros = new javax.swing.JMenuItem();
+        listadoDePrestamos = new javax.swing.JMenuItem();
+        adminAutores = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/Fondo-Inicio.jpg"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 380));
+
+        escritorio.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jMenu1.setText("Socios");
+
+        usuario.setText("Crear Socio");
+        usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(usuario);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Libros");
+
+        agregarLibro.setText("Agregar Libro");
+        jMenu2.add(agregarLibro);
+
+        agregarEjemplares.setText("Agregar Ejemplares");
+        jMenu2.add(agregarEjemplares);
+
+        jMenuBar1.add(jMenu2);
+
+        prestamos.setText("Prestamos");
+
+        pedirPrestamo.setText("Pedir un Prestamo");
+        prestamos.add(pedirPrestamo);
+
+        devolver.setText("Devolver");
+        prestamos.add(devolver);
+
+        jMenuBar1.add(prestamos);
+
+        jMenu3.setText("Administracion");
+
+        listadoDeSocios.setText("Listado de Socios");
+        listadoDeSocios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listadoDeSociosActionPerformed(evt);
+            }
+        });
+        jMenu3.add(listadoDeSocios);
+
+        listaDeLibros.setText("Lista de Libros");
+        jMenu3.add(listaDeLibros);
+
+        listadoDePrestamos.setText("Listado de Prestamos");
+        jMenu3.add(listadoDePrestamos);
+
+        adminAutores.setText("Administración de autores");
+        jMenu3.add(adminAutores);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(escritorio)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
+        // TODO add your handling code here:
+      escritorio.removeAll();
+      escritorio.repaint();
+      LectorView lector=new LectorView();
+      lector.setVisible(true);
+      escritorio.add(lector);
+    }//GEN-LAST:event_usuarioActionPerformed
+
+    private void listadoDeSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoDeSociosActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ListadoSociosView listaDeLectores=new ListadoSociosView();
+        listaDeLectores.setVisible(true);
+        escritorio.add(listaDeLectores);
+    }//GEN-LAST:event_listadoDeSociosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +187,22 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem adminAutores;
+    private javax.swing.JMenuItem agregarEjemplares;
+    private javax.swing.JMenuItem agregarLibro;
+    private javax.swing.JMenuItem devolver;
+    private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JMenuItem listaDeLibros;
+    private javax.swing.JMenuItem listadoDePrestamos;
+    private javax.swing.JMenuItem listadoDeSocios;
+    private javax.swing.JMenuItem pedirPrestamo;
+    private javax.swing.JMenu prestamos;
+    private javax.swing.JMenuItem usuario;
     // End of variables declaration//GEN-END:variables
 }
