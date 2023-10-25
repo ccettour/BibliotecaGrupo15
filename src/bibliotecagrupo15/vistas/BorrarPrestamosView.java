@@ -56,7 +56,7 @@ private DefaultTableModel tabla = new DefaultTableModel() {
 
         setClosable(true);
         setMinimumSize(new java.awt.Dimension(560, 370));
-        setPreferredSize(new java.awt.Dimension(560, 350));
+        setPreferredSize(new java.awt.Dimension(560, 370));
 
         jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(560, 350));
@@ -125,7 +125,7 @@ private DefaultTableModel tabla = new DefaultTableModel() {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
 
         pack();

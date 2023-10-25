@@ -60,8 +60,9 @@ public class AutoresView extends javax.swing.JInternalFrame {
         jTextField1.setText("jTextField1");
 
         setClosable(true);
-        setMinimumSize(new java.awt.Dimension(550, 350));
-        setPreferredSize(new java.awt.Dimension(550, 350));
+        setMaximumSize(new java.awt.Dimension(660, 350));
+        setMinimumSize(new java.awt.Dimension(660, 350));
+        setPreferredSize(new java.awt.Dimension(660, 350));
 
         jDesktopPane1.setBackground(new java.awt.Color(102, 102, 102));
         jDesktopPane1.setForeground(new java.awt.Color(51, 51, 255));
@@ -173,7 +174,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
                                 .addComponent(jTextoAutor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBuscarAutor)))
-                        .addGap(0, 65, Short.MAX_VALUE)))
+                        .addGap(0, 175, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -190,7 +191,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jDesktopPane1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 330, 220));
+        jDesktopPane1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 440, 220));
 
         jBotonEliminar.setText("Eliminar");
         jBotonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -203,10 +204,10 @@ public class AutoresView extends javax.swing.JInternalFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jBotonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +217,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jDesktopPane1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, 40));
+        jDesktopPane1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, -1, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/fondo-autores.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -226,7 +227,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

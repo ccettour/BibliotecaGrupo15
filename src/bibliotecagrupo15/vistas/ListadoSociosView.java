@@ -26,7 +26,6 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTSocios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -47,21 +46,10 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
-        setPreferredSize(new java.awt.Dimension(450, 328));
+        setMaximumSize(new java.awt.Dimension(550, 360));
+        setMinimumSize(new java.awt.Dimension(550, 360));
+        setPreferredSize(new java.awt.Dimension(550, 360));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 403, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 14, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 0, -1, 14));
 
         jTSocios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,32 +69,32 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTSocios);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 420, 96));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 520, 96));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 0));
         jLabel1.setText("Socio:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("Nombre:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 0));
         jLabel3.setText("Domicilio:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 51));
         jLabel4.setText("Mail :");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 51));
         jLabel5.setText("Estado  :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 70, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 70, -1));
 
         jBModificar.setText("Modificar");
         jBModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +102,7 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
                 jBModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, -1, -1));
+        getContentPane().add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
 
         jBEliminar.setText("Eliminar");
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -122,13 +110,13 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
                 jBEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, -1));
+        getContentPane().add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
 
         jTSocio.setEditable(false);
-        getContentPane().add(jTSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 70, -1));
-        getContentPane().add(jTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 210, -1));
-        getContentPane().add(jTDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 153, -1));
-        getContentPane().add(jTMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 220, 140, -1));
+        getContentPane().add(jTSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 70, -1));
+        getContentPane().add(jTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 210, -1));
+        getContentPane().add(jTDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 153, -1));
+        getContentPane().add(jTMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 140, -1));
 
         jRBActivo.setBackground(new java.awt.Color(51, 0, 51));
         jRBActivo.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -139,7 +127,7 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
                 jRBActivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
+        getContentPane().add(jRBActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
         jRBInactivo.setBackground(new java.awt.Color(51, 0, 0));
         jRBInactivo.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -150,12 +138,12 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
                 jRBInactivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
+        getContentPane().add(jRBInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 255, 51));
         jLabel6.setText("Listado de Socios");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
 
         jBActivar.setText("Activar");
         jBActivar.addActionListener(new java.awt.event.ActionListener() {
@@ -163,10 +151,10 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
                 jBActivarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        getContentPane().add(jBActivar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/FondoListaLectores.jpg"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 10, 470, 280));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/FondoListaLectoresv2.jpg"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 600, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -301,7 +289,6 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRBActivo;
     private javax.swing.JRadioButton jRBInactivo;
     private javax.swing.JScrollPane jScrollPane1;
