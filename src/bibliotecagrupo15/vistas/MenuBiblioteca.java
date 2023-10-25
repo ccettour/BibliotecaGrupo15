@@ -101,9 +101,19 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         prestamos.setText("Prestamos");
 
         pedirPrestamo.setText("Pedir un Prestamo");
+        pedirPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pedirPrestamoActionPerformed(evt);
+            }
+        });
         prestamos.add(pedirPrestamo);
 
         devolver.setText("Devolver");
+        devolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                devolverActionPerformed(evt);
+            }
+        });
         prestamos.add(devolver);
 
         jMenuBar1.add(prestamos);
@@ -127,6 +137,11 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jMenu3.add(listaDeLibros);
 
         listadoDePrestamos.setText("Listado de Prestamos");
+        listadoDePrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listadoDePrestamosActionPerformed(evt);
+            }
+        });
         jMenu3.add(listadoDePrestamos);
 
         adminAutores.setText("Administración de autores");
@@ -179,7 +194,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
 
     private void listaDeLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeLibrosActionPerformed
         // TODO add your handling code here:
-        
+
         escritorio.removeAll();
         escritorio.repaint();
         fondoMenu();
@@ -191,7 +206,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
 
     private void adminAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminAutoresActionPerformed
         // TODO add your handling code here:
-        
+
         escritorio.removeAll();
         escritorio.repaint();
         fondoMenu();
@@ -203,7 +218,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
 
     private void listadoDeSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoDeSociosActionPerformed
         // TODO add your handling code here:
-        
+
         escritorio.removeAll();
         escritorio.repaint();
         fondoMenu();
@@ -215,7 +230,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
-        
+
         escritorio.removeAll();
         escritorio.repaint();
         fondoMenu();
@@ -224,6 +239,39 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         escritorio.add(lv);
         escritorio.moveToFront(lv);
     }//GEN-LAST:event_usuarioActionPerformed
+
+    private void pedirPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedirPrestamoActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        PedirPrestamoView ppv = new PedirPrestamoView();
+        ppv.setVisible(true);
+        escritorio.add(ppv);
+        escritorio.moveToFront(ppv);
+    }//GEN-LAST:event_pedirPrestamoActionPerformed
+
+    private void devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        BorrarPrestamosView bpv = new BorrarPrestamosView();
+        bpv.setVisible(true);
+        escritorio.add(bpv);
+        escritorio.moveToFront(bpv);
+    }//GEN-LAST:event_devolverActionPerformed
+
+    private void listadoDePrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoDePrestamosActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        ListaPrestamos lp = new ListaPrestamos();
+        lp.setVisible(true);
+        escritorio.add(lp);
+        escritorio.moveToFront(lp);
+    }//GEN-LAST:event_listadoDePrestamosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,12 +337,12 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }
 }

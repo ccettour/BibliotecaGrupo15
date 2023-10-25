@@ -106,7 +106,7 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 51));
         jLabel5.setText("Estado  :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 70, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 70, -1));
 
         jBModificar.setText("Modificar");
         jBModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +139,7 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
                 jRBActivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+        getContentPane().add(jRBActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, -1));
 
         jRBInactivo.setBackground(new java.awt.Color(51, 0, 0));
         jRBInactivo.setFont(new java.awt.Font("Arial Narrow", 0, 14)); // NOI18N
@@ -150,7 +150,7 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
                 jRBInactivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        getContentPane().add(jRBInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 255, 51));
