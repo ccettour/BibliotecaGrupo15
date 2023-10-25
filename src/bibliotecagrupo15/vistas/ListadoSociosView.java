@@ -192,16 +192,24 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
         // TODO add your handling code here:
         try {
+            if (jTSocio.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Seleccione en la tabla el socio a modificar");
+            } else {
+                int socio = Integer.parseInt(jTSocio.getText());
+                String nom = jTNombre.getText();
+                String dom = jTDomicilio.getText();
+                String mail = jTMail.getText();
 
-            int socio = Integer.parseInt(jTSocio.getText());
-            String nom = jTNombre.getText();
-            String dom = jTDomicilio.getText();
-            String mail = jTMail.getText();
-            Lector l = new Lector(socio, nom, dom, mail, true);
+                if (nom.isEmpty() || dom.isEmpty() || mail.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
+                } else {
+                    Lector l = new Lector(socio, nom, dom, mail, true);
 
-            selec.modificarLector(l);
-            limpiarCampos();
-
+                    selec.modificarLector(l);
+                    limpiarCampos();
+                    cargarTablaActivos();
+                }
+            }
         } catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Uno de los campos fue ingresado "
                     + "incorrectamente o se encuentra vacío" + "\nIntente de nuevo");
@@ -213,14 +221,18 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         // TODO add your handling code here:
         try {
-            int socio = Integer.parseInt(jTSocio.getText());
-            String nom = jTNombre.getText();
-            String dom = jTDomicilio.getText();
-            String mail = jTMail.getText();
-            Lector l = new Lector(socio, nom, dom, mail, true);
-            selec.eliminarLector(l);
-            limpiarCampos();
-
+            if (jTSocio.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Seleccione en la tabla el socio a eliminar");
+            } else {
+                int socio = Integer.parseInt(jTSocio.getText());
+                String nom = jTNombre.getText();
+                String dom = jTDomicilio.getText();
+                String mail = jTMail.getText();
+                Lector l = new Lector(socio, nom, dom, mail, true);
+                selec.eliminarLector(l);
+                limpiarCampos();
+                cargarTablaActivos();
+            }
         } catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Uno de los campos fue ingresado "
                     + "incorrectamente o se encuentra vacío" + "\nIntente de nuevo");
@@ -256,16 +268,19 @@ public class ListadoSociosView extends javax.swing.JInternalFrame {
     private void jBActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActivarActionPerformed
         // TODO add your handling code here:
         try {
+            if (jTSocio.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Seleccione en la tabla el socio a activar");
+            } else {
+                int socio = Integer.parseInt(jTSocio.getText());
+                String nom = jTNombre.getText();
+                String dom = jTDomicilio.getText();
+                String mail = jTMail.getText();
+                Lector l = new Lector(socio, nom, dom, mail, true);
 
-            int socio = Integer.parseInt(jTSocio.getText());
-            String nom = jTNombre.getText();
-            String dom = jTDomicilio.getText();
-            String mail = jTMail.getText();
-            Lector l = new Lector(socio, nom, dom, mail, true);
-
-            selec.modificarLector(l);
-            limpiarCampos();
-
+                selec.modificarLector(l);
+                limpiarCampos();
+                cargarTablaInactivos();
+            }
         } catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Uno de los campos fue ingresado "
                     + "incorrectamente o se encuentra vacío" + "\nIntente de nuevo");

@@ -23,6 +23,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
     public AutoresView() {
         initComponents();
         crearCabecera();
+        cargarTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -75,11 +76,6 @@ public class AutoresView extends javax.swing.JInternalFrame {
         jTextoNacion.setText("Nacionalidad");
 
         jIdAutor.setEditable(false);
-        jIdAutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jIdAutorActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("ID");
 
@@ -97,9 +93,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
                     .addComponent(jTextoIdentificacion)
                     .addComponent(jNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,10 +102,10 @@ public class AutoresView extends javax.swing.JInternalFrame {
                         .addComponent(jFechaNacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jIdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBotonGuardar))
                     .addComponent(jTextoNacion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,13 +125,13 @@ public class AutoresView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jIdAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBotonGuardar))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jDesktopPane1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 220, 260));
+        jDesktopPane1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 180, 260));
 
         jAutores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,7 +173,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
                                 .addComponent(jTextoAutor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jBuscarAutor)))
-                        .addGap(0, 17, Short.MAX_VALUE)))
+                        .addGap(0, 65, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -192,11 +186,11 @@ public class AutoresView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jDesktopPane1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 290, 180));
+        jDesktopPane1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 330, 220));
 
         jBotonEliminar.setText("Eliminar");
         jBotonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -222,11 +216,11 @@ public class AutoresView extends javax.swing.JInternalFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jDesktopPane1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, -1, 40));
+        jDesktopPane1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/fondo-ejemplares.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/fondo-autores.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        jDesktopPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jDesktopPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 670, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -262,6 +256,7 @@ public class AutoresView extends javax.swing.JInternalFrame {
 
         alu.eliminarAutor(idAutor);
         limpiarTabla();
+        cargarTabla();
     }//GEN-LAST:event_jBotonEliminarActionPerformed
 
     private void jBuscarAutorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBuscarAutorKeyReleased
@@ -282,17 +277,11 @@ public class AutoresView extends javax.swing.JInternalFrame {
         String fechaNacimiento = jAutores.getValueAt(jAutores.getSelectedRow(), 2).toString();
         LocalDate fecha = LocalDate.parse(fechaNacimiento);
 
-        Autor autor = alu.buscarAutor(idAutor);
-
         jIdentificacion.setText(nombre);
         jNacionalidad.setText(nacionalidad);
         jFechaNacimiento.setDate(Date.valueOf(fecha));
         jIdAutor.setText(idAutor + "");
     }//GEN-LAST:event_jAutoresMouseClicked
-
-    private void jIdAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jIdAutorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jIdAutorActionPerformed
 
     private void jBotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotonGuardarActionPerformed
 
@@ -301,16 +290,22 @@ public class AutoresView extends javax.swing.JInternalFrame {
             String nacionalidad = jNacionalidad.getText();
             LocalDate fecha = jFechaNacimiento.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            if (jIdAutor.getText().isEmpty()) {
-                Autor autor = new Autor(nombre, fecha, nacionalidad, true);
-                alu.guardarAutor(autor);
+            if (nombre.isEmpty() || nacionalidad.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
             } else {
-                int idAutor = Integer.parseInt(jIdAutor.getText());
+                if (jIdAutor.getText().isEmpty()) {
+                    Autor autor = new Autor(nombre, fecha, nacionalidad, true);
+                    alu.guardarAutor(autor);
+                } else {
+                    int idAutor = Integer.parseInt(jIdAutor.getText());
 
-                Autor autor = new Autor(idAutor, nombre, fecha, nacionalidad, true);
-                alu.modificarAutor(autor);
-                limpiar();
+                    Autor autor = new Autor(idAutor, nombre, fecha, nacionalidad, true);
+                    alu.modificarAutor(autor);
+                    limpiar();
+                }
             }
+            limpiarTabla();
+            cargarTabla();
         } catch (java.lang.NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Uno de los campos fue ingresado "
                     + "incorrectamente o se encuentra vacío" + "\nIntente de nuevo");
@@ -343,7 +338,8 @@ public class AutoresView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jTextoIdentificacion;
     private javax.swing.JLabel jTextoNacion;
     // End of variables declaration//GEN-END:variables
-private void limpiarTabla() {
+
+    private void limpiarTabla() {
         int f = jAutores.getRowCount() - 1;
 
         for (; f >= 0; f--) {
@@ -358,10 +354,17 @@ private void limpiarTabla() {
         dtm.addColumn("Nacionalidad");
         jAutores.setModel(dtm);
     }
-   private void limpiar() {
-       jIdentificacion.setText("");
+
+    private void limpiar() {
+        jIdentificacion.setText("");
         jNacionalidad.setText("");
         jFechaNacimiento.setDate(Date.valueOf(LocalDate.now()));
         jIdAutor.setText("");
-   }
+    }
+    
+    private void cargarTabla(){
+        for (Autor a : alu.ListarAutores()) {
+                dtm.addRow(new Object[]{a.getIdAutor(), a.getIdentificacion(), a.getFechaNacimiento(), a.getNacionalidad()});
+        }
+    }
 }

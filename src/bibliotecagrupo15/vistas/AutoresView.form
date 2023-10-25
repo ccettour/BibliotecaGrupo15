@@ -92,7 +92,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="30" width="220" height="260"/>
+                  <AbsoluteConstraints x="10" y="30" width="180" height="260"/>
                 </Constraint>
               </Constraints>
 
@@ -102,10 +102,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="134" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextoIdentificacion" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jNacionalidad" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
                               <Component id="jIdentificacion" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
@@ -115,12 +112,12 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jIdAutor" min="-2" pref="71" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jBotonGuardar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jTextoNacion" min="-2" pref="127" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="57" max="32767" attributes="0"/>
+                          <EmptySpace pref="54" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -142,9 +139,9 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="14" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jIdAutor" min="-2" max="-2" attributes="0"/>
-                              <Component id="jBotonGuardar" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jIdAutor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jBotonGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="28" max="32767" attributes="0"/>
                       </Group>
@@ -177,9 +174,6 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jIdAutorActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
@@ -199,7 +193,7 @@
             <Container class="javax.swing.JPanel" name="jPanel3">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="240" y="30" width="290" height="180"/>
+                  <AbsoluteConstraints x="200" y="30" width="330" height="220"/>
                 </Constraint>
               </Constraints>
 
@@ -219,7 +213,7 @@
                                           <Component id="jBuscarAutor" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="65" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -237,7 +231,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jTexto" min="-2" pref="26" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="95" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="140" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -309,7 +303,7 @@
             <Container class="javax.swing.JPanel" name="jPanel4">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="420" y="220" width="-1" height="40"/>
+                  <AbsoluteConstraints x="430" y="260" width="-1" height="40"/>
                 </Constraint>
               </Constraints>
 
@@ -347,13 +341,13 @@
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/bibliotecagrupo15/vistas/imagenes/fondo-ejemplares.png"/>
+                  <Image iconType="3" name="/bibliotecagrupo15/vistas/imagenes/fondo-autores.jpg"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="jLabel2"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="0" y="-10" width="670" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>

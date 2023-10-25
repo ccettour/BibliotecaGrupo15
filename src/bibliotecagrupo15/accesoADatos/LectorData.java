@@ -147,7 +147,7 @@ public class LectorData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Lector modificado");
+                JOptionPane.showMessageDialog(null, "Lector actualizado");
             } else {
                 JOptionPane.showMessageDialog(null, "El lector no existe");
             }
