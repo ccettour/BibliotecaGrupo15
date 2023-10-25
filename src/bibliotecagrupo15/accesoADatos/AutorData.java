@@ -63,6 +63,31 @@ public class AutorData {
         return autor;
     }
     
+    public Autor buscarAutorXNombre(String nombre) {
+        String sql = "SELECT idAutor, identificacion, fechaNacimiento, nacionalidad, estado FROM autor WHERE identificacion=?";
+        Autor autor = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                autor = new Autor();
+                autor.setIdAutor(rs.getInt("idAutor"));
+                autor.setIdentificacion(rs.getString("identificacion"));
+                autor.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                autor.setNacionalidad(rs.getString("nacionalidad"));
+                autor.setEstado(rs.getBoolean("estado"));
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el autor");
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Autor");
+        }
+        return autor;
+    }
+    
     public void modificarAutor(Autor autor){
         String sql= "UPDATE autor SET identificacion=?, fechaNacimiento=?, nacionalidad=? WHERE idAutor=?";
         PreparedStatement ps=null;
@@ -123,7 +148,33 @@ public class AutorData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de alumnos");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Autor");
+        }
+        return autores;
+    }
+    
+    public List<Autor> ListarAutoresTodos() {
+        String sql = "SELECT * FROM autor";
+        ArrayList<Autor> autores = new ArrayList<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Autor autor = new Autor();
+                
+                autor.setIdAutor(rs.getInt("idAutor"));
+                autor.setIdentificacion(rs.getString("identificacion"));
+                autor.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                autor.setNacionalidad(rs.getString("nacionalidad"));
+                autor.setEstado(rs.getBoolean("estado"));
+
+                autores.add(autor);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Autor");
         }
         return autores;
     }

@@ -45,7 +45,7 @@ public class Ejemplar {
 
     @Override
     public String toString() {
-        return "" + codigo + " - " + libro.getTitulo();
+        return "" + libro;
     }
     
     

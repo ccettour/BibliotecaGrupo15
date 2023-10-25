@@ -15,6 +15,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
      */
     public MenuBiblioteca() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -26,7 +27,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -45,28 +46,36 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         adminAutores = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        escritorio.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/Fondo-Inicio.jpg"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 380));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bibliotecagrupo15/vistas/imagenes/Fondo-Iniciov2.jpg"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
-        jDesktopPane1.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Socios");
 
         usuario.setText("Crear Socio");
+        usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioActionPerformed(evt);
+            }
+        });
         jMenu1.add(usuario);
 
         jMenuBar1.add(jMenu1);
@@ -74,9 +83,19 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jMenu2.setText("Libros");
 
         agregarLibro.setText("Agregar Libro");
+        agregarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarLibroActionPerformed(evt);
+            }
+        });
         jMenu2.add(agregarLibro);
 
         agregarEjemplares.setText("Agregar Ejemplares");
+        agregarEjemplares.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarEjemplaresActionPerformed(evt);
+            }
+        });
         jMenu2.add(agregarEjemplares);
 
         jMenuBar1.add(jMenu2);
@@ -84,9 +103,19 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         prestamos.setText("Prestamos");
 
         pedirPrestamo.setText("Pedir un Prestamo");
+        pedirPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pedirPrestamoActionPerformed(evt);
+            }
+        });
         prestamos.add(pedirPrestamo);
 
         devolver.setText("Devolver");
+        devolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                devolverActionPerformed(evt);
+            }
+        });
         prestamos.add(devolver);
 
         jMenuBar1.add(prestamos);
@@ -94,15 +123,35 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         jMenu3.setText("Administracion");
 
         listadoDeSocios.setText("Listado de Socios");
+        listadoDeSocios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listadoDeSociosActionPerformed(evt);
+            }
+        });
         jMenu3.add(listadoDeSocios);
 
-        listaDeLibros.setText("Lista de Libros");
+        listaDeLibros.setText("Administración de libros");
+        listaDeLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDeLibrosActionPerformed(evt);
+            }
+        });
         jMenu3.add(listaDeLibros);
 
         listadoDePrestamos.setText("Listado de Prestamos");
+        listadoDePrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listadoDePrestamosActionPerformed(evt);
+            }
+        });
         jMenu3.add(listadoDePrestamos);
 
         adminAutores.setText("Administración de autores");
+        adminAutores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminAutoresActionPerformed(evt);
+            }
+        });
         jMenu3.add(adminAutores);
 
         jMenuBar1.add(jMenu3);
@@ -113,15 +162,118 @@ public class MenuBiblioteca extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void agregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarLibroActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        LibrosView mv = new LibrosView();
+        mv.setVisible(true);
+        escritorio.add(mv);
+        escritorio.moveToFront(mv);
+    }//GEN-LAST:event_agregarLibroActionPerformed
+
+    private void agregarEjemplaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarEjemplaresActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        EjemplaresView ev = new EjemplaresView();
+        ev.setVisible(true);
+        escritorio.add(ev);
+        escritorio.moveToFront(ev);
+    }//GEN-LAST:event_agregarEjemplaresActionPerformed
+
+    private void listaDeLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeLibrosActionPerformed
+        // TODO add your handling code here:
+
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        AdminLibrosView alv = new AdminLibrosView();
+        alv.setVisible(true);
+        escritorio.add(alv);
+        escritorio.moveToFront(alv);
+    }//GEN-LAST:event_listaDeLibrosActionPerformed
+
+    private void adminAutoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminAutoresActionPerformed
+        // TODO add your handling code here:
+
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        AutoresView auv = new AutoresView();
+        auv.setVisible(true);
+        escritorio.add(auv);
+        escritorio.moveToFront(auv);
+    }//GEN-LAST:event_adminAutoresActionPerformed
+
+    private void listadoDeSociosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoDeSociosActionPerformed
+        // TODO add your handling code here:
+
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        ListadoSociosView lsv = new ListadoSociosView();
+        lsv.setVisible(true);
+        escritorio.add(lsv);
+        escritorio.moveToFront(lsv);
+    }//GEN-LAST:event_listadoDeSociosActionPerformed
+
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
+        // TODO add your handling code here:
+
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        LectorView lv = new LectorView();
+        lv.setVisible(true);
+        escritorio.add(lv);
+        escritorio.moveToFront(lv);
+    }//GEN-LAST:event_usuarioActionPerformed
+
+    private void pedirPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedirPrestamoActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        PedirPrestamoView ppv = new PedirPrestamoView();
+        ppv.setVisible(true);
+        escritorio.add(ppv);
+        escritorio.moveToFront(ppv);
+    }//GEN-LAST:event_pedirPrestamoActionPerformed
+
+    private void devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        BorrarPrestamosView bpv = new BorrarPrestamosView();
+        bpv.setVisible(true);
+        escritorio.add(bpv);
+        escritorio.moveToFront(bpv);
+    }//GEN-LAST:event_devolverActionPerformed
+
+    private void listadoDePrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listadoDePrestamosActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        fondoMenu();
+        ListaPrestamos lp = new ListaPrestamos();
+        lp.setVisible(true);
+        escritorio.add(lp);
+        escritorio.moveToFront(lp);
+    }//GEN-LAST:event_listadoDePrestamosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +315,7 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     private javax.swing.JMenuItem agregarEjemplares;
     private javax.swing.JMenuItem agregarLibro;
     private javax.swing.JMenuItem devolver;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -177,4 +329,22 @@ public class MenuBiblioteca extends javax.swing.JFrame {
     private javax.swing.JMenu prestamos;
     private javax.swing.JMenuItem usuario;
     // End of variables declaration//GEN-END:variables
+
+    private void fondoMenu() {
+        jPanel2 = new javax.swing.JPanel();
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
+        escritorio.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        escritorioLayout.setVerticalGroup(
+                escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+    }
 }

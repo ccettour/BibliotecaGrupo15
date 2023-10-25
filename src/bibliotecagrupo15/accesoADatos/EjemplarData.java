@@ -26,7 +26,6 @@ public class EjemplarData {
             ResultSet exito = ps.getGeneratedKeys();
             if(exito.next()){
                 ejemplar.setCodigo(exito.getInt(1));
-                JOptionPane.showMessageDialog(null, "Ejemplar creado");
             }
             ps.close();
             
@@ -71,7 +70,7 @@ public class EjemplarData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Estado de ejemplar modificado");
+                //JOptionPane.showMessageDialog(null, "Estado de ejemplar modificado");
 
             } else {
                 JOptionPane.showMessageDialog(null, "El ejemplar no existe");

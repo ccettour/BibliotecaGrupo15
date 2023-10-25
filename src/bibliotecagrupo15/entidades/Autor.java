@@ -1,6 +1,7 @@
 package bibliotecagrupo15.entidades;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Autor {
     private int idAutor;
@@ -72,6 +73,28 @@ public class Autor {
     @Override
     public String toString() {
         return ""+identificacion;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.identificacion);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Autor other = (Autor) obj;
+        return Objects.equals(this.identificacion, other.identificacion);
     }
     
     
