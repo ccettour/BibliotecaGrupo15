@@ -24,6 +24,8 @@ public class Conexion {
           JOptionPane.showMessageDialog(null, "Error al cargar los drivers");
         } catch (SQLException ex) {
           JOptionPane.showMessageDialog(null, "Error al conectarse a la base de datos");
+        } catch( java.lang.NullPointerException j){
+            System.out.println("Por favor conectarse a la base de datos");
         }
     }
         return connection;
