@@ -95,8 +95,6 @@ public class Inicio extends javax.swing.JFrame {
         } catch(java.lang.NullPointerException j){
             System.out.println("Por favor conectarse a la base de datos");
         }
-        
-
     }//GEN-LAST:event_IngresarActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed

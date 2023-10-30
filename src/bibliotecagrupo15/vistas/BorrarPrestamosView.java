@@ -169,6 +169,7 @@ private void cargarCabecera(){
 tabla.addColumn("ID");
 tabla.addColumn("NRO SOCIO");
 tabla.addColumn("NOMBRE");
+tabla.addColumn("LIBRO");
 tabla.addColumn("FECHA DE INICIO");
 tabla.addColumn("VENCIMIENTO");
 tablaP.setModel(tabla);
@@ -184,7 +185,7 @@ private void cargarTabla(){
     limpiar();
 List<Prestamo>prestamos=pd.ListarPrestamos();
     for (Prestamo p : prestamos) {
-        tabla.addRow(new Object[]{p.getIdPrestamo(),p.getLector().getSocio(),p.getLector().getNombre(),p.getFechaInicio(), p.getFechaFin()});
+        tabla.addRow(new Object[]{p.getIdPrestamo(),p.getLector().getSocio(),p.getLector().getNombre(),p.getEjemplar().getLibro().getTitulo(),p.getFechaInicio(), p.getFechaFin()});
     }
         
 }
