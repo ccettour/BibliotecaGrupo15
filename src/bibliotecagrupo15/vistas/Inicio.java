@@ -44,7 +44,6 @@ public class Inicio extends javax.swing.JFrame {
         setLocation(new java.awt.Point(0, 0));
         setMaximumSize(new java.awt.Dimension(500, 500));
         setMinimumSize(new java.awt.Dimension(500, 500));
-        setPreferredSize(new java.awt.Dimension(500, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 180, -1));
@@ -86,14 +85,16 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarActionPerformed
-
-        Login login = new Login();
-        if (login.Ingreso(Usuario, Contrasenia)==true) {
-            setVisible(false);
+        try{
+            Login login = new Login();
+            if (login.Ingreso(Usuario, Contrasenia) == true) {
+                setVisible(false);
+            }
+            Usuario.setText("");
+            Contrasenia.setText("");
+        } catch(java.lang.NullPointerException j){
+            System.out.println("Por favor conectarse a la base de datos");
         }
-        Usuario.setText("");
-        Contrasenia.setText("");
-
     }//GEN-LAST:event_IngresarActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed

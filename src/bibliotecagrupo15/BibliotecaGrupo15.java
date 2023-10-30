@@ -50,12 +50,12 @@ public class BibliotecaGrupo15 {
         
         
         //CREAR LIBRO
-        Libro libro = new Libro(48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, Tipo.INFORMATICA, "Mcgraw-Hill", true);
-        Libro libro1 = new Libro(78290850, "Fundamentos de Sistemas de Bases de Datos", ad.buscarAutor(3), 2007, Tipo.INFORMATICA, "Addison-Wesley", true);
-        Libro libro2 = new Libro(97860715, "Fundamentos de Programacion", ad.buscarAutor(2), 2020, Tipo.INFORMATICA, "Mcgraw-Hill", true);
+        Libro libro = new Libro(48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, Tipo.INFORMÁTICA, "Mcgraw-Hill", true);
+        Libro libro1 = new Libro(78290850, "Fundamentos de Sistemas de Bases de Datos", ad.buscarAutor(3), 2007, Tipo.INFORMÁTICA, "Addison-Wesley", true);
+        Libro libro2 = new Libro(97860715, "Fundamentos de Programacion", ad.buscarAutor(2), 2020, Tipo.INFORMÁTICA, "Mcgraw-Hill", true);
         Libro libro3 = new Libro(98752277, "Martin Fierro", ad.buscarAutor(4), 2010, Tipo.LITERATURA, "Visor", true);
-        Libro libro4 = new Libro(96844431, "Sistemas operativos", ad.buscarAutor(1), 2000, Tipo.INFORMATICA, "ADDISON WESLEY LONGMAN", true);
-        Libro libro5 = new Libro(97884291, "Sistemas operativos. Conceptos fundamentales", ad.buscarAutor(1), 1994, Tipo.INFORMATICA, "Editorial Reverté", true);
+        Libro libro4 = new Libro(96844431, "Sistemas operativos", ad.buscarAutor(1), 2000, Tipo.INFORMÁTICA, "ADDISON WESLEY LONGMAN", true);
+        Libro libro5 = new Libro(97884291, "Sistemas operativos. Conceptos fundamentales", ad.buscarAutor(1), 1994, Tipo.INFORMÁTICA, "Editorial Reverté", true);
         //ld.guardarLibro(libro);
 //        ld.guardarLibro(libro1);
 //        ld.guardarLibro(libro2);
@@ -65,7 +65,7 @@ public class BibliotecaGrupo15 {
         
         
         //MODIFICAR LIBRO
-        Libro modif = new Libro(5,48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, Tipo.INFORMATICA, "McGraw Hill", true);
+        Libro modif = new Libro(5,48146417, "Fundamentos de sistemas operativos", ad.buscarAutor(1), 2005, Tipo.INFORMÁTICA, "McGraw Hill", true);
         //ld.modificarLibro(modif);
         
         
